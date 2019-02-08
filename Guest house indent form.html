@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest House Booking Form</title>
+  <link rel="stylesheet"   href="form.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script src="main.js" type="text/javascript"></script>
+  <div class="container">
+    <form id="contact" action="" method="post">
+     <div id="guestname">
+      <h3>GUEST INFORMATION</h3>
+      <fieldset>
+        <input placeholder="Guest/Visitor Name" type="text" tabindex="1" required autofocus>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Phone Number " type="tel" tabindex="2" required>
+      </fieldset>
+       </div>
+     <div id="address">
+      <h3>GUEST ADDRESS</h3>
+      <fieldset>
+        <input placeholder="Flat/appartment/street number" type="text" tabindex="1" required autofocus>
+      </fieldset>
+      <fieldset>
+        <input placeholder="City" type="text" tabindex="3" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="State" type="text" tabindex="4" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Pin" type="text" tabindex="5" required></>
+      </fieldset>
+     </div>
+     <div id="roomrequirement">
+      <h3>ROOM DETAILS</h3>
+      <fieldset>
+        <input placeholder="Number of person" type="text" tabindex="6" required autofocus>
+      </fieldset>
+      <fieldset>
+      Payment: <br>
+      <select id="payment">
+      <option value="">Please choose an option</option>
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="hamster">Hamster</option>
+      <option value="parrot">Parrot</option>
+      <option value="spider">Spider</option>
+      </select>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Number of rooms" type="number" tabindex="7" required>
+      </fieldset>
+      <fieldset>
+      Accomodation Type: <br>
+      <select id="accomodation">
+      <option value="">Please choose an option</option>
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="hamster">Hamster</option>
+      <option value="parrot">Parrot</option>
+      <option value="spider">Spider</option>
+      <option value="goldfish">Goldfish</option>
+      </select>
+      </fieldset>
+      <fieldset>
+        Date & Time of arrival : <br>
+        <input placeholder="Date & Time of Arrival: " type="datetime" tabindex="8" required>
+      </fieldset>
+      <fieldset>
+        Date & Time of departure : <br>
+        <input placeholder="Date & Time of Departure: " type="datetime" tabindex="9" required>
+      </fieldset>
+      <fieldset>
+      Purpose of visit: <br>
+      <select id="purpose">
+      <option value="">Please choose an option</option>
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="hamster">Hamster</option>
+      <option value="parrot">Parrot</option>
+      <option value="spider">Spider</option>
+      <option value="goldfish">Goldfish</option>
+      </select>
+      </fieldset>
+      <fieldset>
+        Numbers of food Type: <br>
+        <ul>
+        <li>Veg:
+          <ul style="list-style-Type: none;">
+          <li><input type="number" name="Breakfast" tabindex="10"></li>
+          <li><input type="number" name="Lunch" tabindex="11"></li>
+          <li><input type="number" name="Dinner" tabindex="12"></li>
+          </ul>
+        </li>
+        <br>
+        <li>Non-Veg:
+          <ul style="list-style-Type: none;">
+          <li><input type="number" name="Breakfast" tabindex="13"></li>
+          <li><input type="number" name="Lunch" tabindex="14"></li>
+          <li><input type="number" name="Dinner" tabindex="15"></li>
+          </ul>
+        </ul>
+      </fieldset>
+    </div>
+    <div id="indentorinfo">
+     <h3>INDENTOR INFORMATION</h3>
+     <fieldset>
+       <input placeholder="Employee ID" type="text" tabindex="16" required autofocus>
+     </fieldset>
+     <fieldset>
+       <input placeholder="Indentor Name" type="text" tabindex="17" required>
+     </fieldset>
+     <fieldset>
+       <input placeholder="Designation" type="text" tabindex="18" required>
+     </fieldset>
+     <fieldset>
+       <input placeholder="Department" type="text" tabindex="19" required>
+     </fieldset>
+     <fieldset>
+       <input placeholder="Phone number" type="tel" tabindex="20" required>
+     </fieldset>
+     <fieldset>
+       <input placeholder="Email ID" type="email" tabindex="21" required>
+     </fieldset>
+      </div>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      </fieldset>
+       </div>
+    </form>
+  </div>
+</body>
+</html>
