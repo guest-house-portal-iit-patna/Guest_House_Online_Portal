@@ -12,24 +12,24 @@
 	$dbname = "innovation";
 
     $dbc = mysqli_connect($hostname, $username1, $password, $dbname) OR die("could not connect to database, ERROR: ".mysqli_connect_error());
-
-
+    
+   
     mysqli_set_charset($dbc, "utf8");
     if($password1!=$password2){
-    	echo = "password don't match"."<br>";
+    	echo "password don't match"."<br>";
     }
     else{
-		$query1 = "SELECT * FROM guest_users WHERE email = $email";
-		$query2 = "SELECT * FROM guest_users WHERE username = $username";
+		$query1 = "SELECT * FROM guest_users WHERE email = '$email'";
+		$query2 = "SELECT * FROM guest_users WHERE username = '$username'";
 	    $result1 = mysqli_query($dbc,$query1);
 	    $result2 =  mysqli_query($dbc,$query2);
 	    $row1 = mysqli_fetch_array($result1,MYSQLI_ASSOC);
 	    $row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 	    $count1 = mysqli_num_rows($result1);
 	    $count2 = mysqli_num_rows($result2);
-
-	    if(count1+count2==0){
-	    	$query = "INSERT INTO guest_users (username,email,password) VALUES($username,$email,$password)";
+        
+	    if($count1+$count2==0){
+	    	$query = "INSERT INTO guest_users (username,email,password) VALUES('$username','$email','$password1')";
 	    	if(mysqli_query($dbc,$query)){
 	    		echo "Registration complete"."<br>";
 	    	}
@@ -61,11 +61,11 @@
 				 //header("location: signin.php");
 	    }
 	    else{
-              	if($count1==1)
+              	if($count1>=1)
               	{
                 	echo "This email id is already registered"."<br>";
                 }
-                if($count2==1)
+                if($count2>=1)
                 {
                 	echo "This username already exists"."<br>";	
                 }
