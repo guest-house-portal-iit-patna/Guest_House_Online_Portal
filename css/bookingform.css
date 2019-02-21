@@ -1,5 +1,5 @@
-.container {
-max-width: 400px;
+ .container {
+max-width: 950px;
 width: 100%;
 margin: 0 auto;
 position: relative;
@@ -76,12 +76,14 @@ resize: none;
 #contact button[type="submit"] {
 cursor: pointer;
 width: 100%;
+max-width: 400px;
 border: none;
 background: #4CAF50;
 color: #FFF;
 margin: 0 0 5px;
 padding: 10px;
 font-size: 15px;
+float: none;
 }
 
 #contact button[type="submit"]:hover {
@@ -99,4 +101,21 @@ box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 #contact textarea:focus {
 outline: 0;
 border: 1px solid #aaa;
+}
+
+.first-container {
+display: inline-block;
+max-width: 400px;
+width: 100%;
+margin: 0 auto;
+position: relative;
+float: left;
+}
+.second-container {
+  display: inline-block;
+max-width: 400px;
+width: 100%;
+margin: 0 auto;
+position: relative;
+float: right;
 }
