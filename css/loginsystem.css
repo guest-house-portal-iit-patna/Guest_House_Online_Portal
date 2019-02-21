@@ -28,6 +28,12 @@ form, .content {
   border-radius: 0px 0px 10px 10px;
 }
 
+.login , .registration-form {
+  background: #eee;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+
 .input-group {
   margin: 10px 0px 10px 0px;
 }
@@ -52,6 +58,12 @@ form, .content {
   background: #5F9EA0;
   border: none;
   border-radius: 5px;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+.button [type="submit"]:active {
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .errors {
