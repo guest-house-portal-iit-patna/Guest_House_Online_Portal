@@ -69,7 +69,7 @@ if(isset($_POST['register']))
             $mail->Username = "vatsal.eliot@gmail.com";
             $mail->Password = "mkaqaumuchffjcmh";
             $mail->SetFrom("singh99sahil.gs@gmail.com");
-            $mail->Subject = "Welecome to IIT PATNA Guest House Booking Portal";
+            $mail->Subject = "Welcome to IIT PATNA Guest House Booking Portal";
             $mail->Body = "Hi ".$username.",<br><br>Welcome to the Guest House booking portal of IIT Patna. <br> You have succesfully been registered.<br> <br> Thank you";
             $mail->AddAddress($email);
 
@@ -78,8 +78,6 @@ if(isset($_POST['register']))
              }
 
             header('location: homepage.php');
-
-
         }
       }
       else{

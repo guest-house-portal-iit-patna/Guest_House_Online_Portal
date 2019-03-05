@@ -31,6 +31,9 @@ if(empty($_SESSION['username'])) {
   <?php endif ?>
  <?php if(isset($_SESSION['username'])): ?>
    <p>Welcome <strong> <?php  echo $_SESSION['username']; ?>. </strong> </p>
+   <a href="booking.php">Make a booking request.</a> <br>
+   <a href="booking.php">Check status of current requests.</a> <br>
+   <a href="booking.php">Check availability.</a> <br>
    <p> <a href="homepage.php?logout='1'" style="color: red;"> Logout</a> </p>
  <?php endif  ?>
 </div>
