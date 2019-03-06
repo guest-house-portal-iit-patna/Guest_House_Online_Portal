@@ -1,4 +1,6 @@
-<?php include('server.php'); ?>
+<?php include('server.php');
+// include('index.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +33,7 @@
   </div>
   <p>
     Not a member yet? <a href="register.php">Register here</a>
-   </p>
+  </p>
 </form>
 
 </body>
