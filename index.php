@@ -1,8 +1,14 @@
+<?php include('server.php');
+if(!isset($_SESSION['user_role']))
+$_SESSION['user_role']="guest";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>IIT PATNA Guest House Portal</title>
 	<meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -12,7 +18,7 @@
 
 </head>
 <body>
-	<img src="images/iitp_logo.png" class="rounded float-left">
+	<img src="images/iitp_logo.png" class="rounded float-left" height="120">
 	<div class="header-nav">
 	  <h1>IIT PATNA</h1>
 	  <h2>Guest House Booking Portal</h2>
@@ -50,7 +56,7 @@
 	        Institute Member Login
 	      </a>
 	      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	        <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php">Admin</a>
+	        <a class="dropdown-item" href="/Guest_House_Online_Portal/adminlogin.php">Admin</a>
 	        <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php">Faculty/Staff</a>
 	        <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php">Student</a>
 	      </div>
@@ -69,8 +75,7 @@
 	      </article>
 
 	      <article>
-	      <h4>Mp
-	      il</h4>
+	      <h4>Mail</h4>
 	      <p><a href="#">mail_guest_house@gmail.com</a></p>
 	      </article>
 
@@ -81,9 +86,7 @@
 	    </footer>
 	  </div>
 	</div>
-
 	</div>
-
 </body>
 </html>
 

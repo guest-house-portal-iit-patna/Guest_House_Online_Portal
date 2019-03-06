@@ -5,25 +5,18 @@ nav {
   background: #5F9EA0;
   text-align: center;
   border: 1px solid #80C4DE;
-  border-bottom: none;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 10px 10px;
   padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.5);
 }
 
 .header-nav {
   margin: 40px auto auto;
   text-align: center;
-  /* background-image: url("../images/iitp_logo.png");
-  background-repeat: no-repeat;
-  background-size: 120px 120px;
-  background-position: 350px 25px; */
 }
 
 img {
   width:120px;
   margin-left: 330px;
   margin-right: -500px;
-
-  /* image-resolution: 120px 120px; */
-
 }

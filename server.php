@@ -141,7 +141,59 @@ if(isset($_POST['login']))
       {
         array_push($errors, "Incorrect password.");
       }
+    }
+  }
+}
 
+
+//logging in (from admin)
+if(isset($_POST['adminlogin']))
+{
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  //ensure fields are entered.
+  if(empty($username))
+  {
+    array_push($errors, "Username is required.");
+  }
+  if(empty($password))
+  {
+    array_push($errors, "Password is required.");
+  }
+  if(count($errors)==0)
+  {
+// encrypting password for security.
+    $query= "SELECT * FROM admin WHERE username= '$username' AND password='$password' ";
+    $result = mysqli_query($db,$query);
+
+    $query1 = "SELECT password FROM admin WHERE username = '$username'";
+    $query2 = "SELECT username FROM admin WHERE password = '$password'";
+      $result1 = mysqli_query($db,$query1);
+      $result2 =  mysqli_query($db,$query2);
+      $row1 = mysqli_fetch_array($result1,MYSQLI_ASSOC);
+      $row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
+      $count1 = mysqli_num_rows($result1);
+      $count2 = mysqli_num_rows($result2);
+
+    if(mysqli_num_rows($result)==1)
+    {
+      //log user in
+      $_SESSION['username']=$username;
+      $_SESSION['success'] = "You are now logged in.";
+      $home_url = 'http://' . $_SERVER['HTTP_HOST'] .'/Guest_House_Online_Portal/admin/adminhome.php';
+      header('Location: ' . $home_url);
+    }
+    else
+    {
+      array_push($errors, "The username/password combination is incorrect.");
+      if($count1==0)
+      {
+        array_push($errors," The Username does not exist.");
+      }
+      else if ($count1==1)
+      {
+        array_push($errors, "Incorrect password.");
+      }
     }
   }
 }
@@ -152,7 +204,9 @@ if(isset($_POST['login']))
   {
     session_destroy();
     unset($_SESSION['username']);
-    header('location: login.php');
+    header('location: index.php');
+    $home_url = 'http://' . $_SERVER['HTTP_HOST'] .'/Guest_House_Online_Portal/index.php';
+    header('Location: ' . $home_url);
   }
 
     ?>

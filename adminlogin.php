@@ -1,5 +1,6 @@
-<?php include('server.php');
- include('navbar.php');
+<?php
+ include('server.php');
+ include('templates/navbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,9 +21,9 @@
   <div id="root"></div>
   <!-- <script src="main.js" type="text/javascript"></script> -->
 <div class="header">
-  <h2>Login</h2>
+  <h2>Admin Login</h2>
 </div>
-<form class="login" action="login.php" method="post" style="margin-bottom:300px;">
+<form class="login" action="adminlogin.php" method="post" style="margin-bottom:300px;">
 
   <!-- The erros are displayed here-->
   <?php include('errors.php'); ?>
@@ -36,11 +37,9 @@
     <input type="password" name="password" required>
   </div>
   <div class="input-group">
-    <button type="submit" name="login" class="button">Login</button>
+    <button type="submit" name="adminlogin" class="button" >Login</button>
   </div>
-  <p>
-    Not a member yet? <a href="register.php">Register here</a>
-  </p>
+
 </form>
 
 </body>

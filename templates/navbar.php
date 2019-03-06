@@ -11,7 +11,7 @@
   <ul class="navbar-nav mr-auto">
 
     <li class="nav-item active">
-      <a class="nav-link" href="https://ww  w.iitp.ac.in/hostel/reachIITP.html" style="color: #fff;">How to reach IIT Patna?</a>
+      <a class="nav-link" href="https://www.iitp.ac.in/hostel/reachIITP.html" style="color: #fff;">How to reach IIT Patna?</a>
     </li>
     <li class="nav-item active">
       <a class="nav-link" href="https://www.iitp.ac.in/" style="color: #fff;">IIT Patna</a>
@@ -32,9 +32,9 @@
         <?php echo $_SESSION['username']; ?>
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="/Guest_House_Online_Portal/adminlogin.php" >Admin</a>
-        <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php" >Faculty/Staff</a>
-        <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php" >Student</a>
+        <a class="dropdown-item" href="/Guest_House_Online_Portal/adminlogin.php" >option</a>
+        <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php" >option</a>
+        <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php" >option</a>
       </div>
   </ul>
   </span>
