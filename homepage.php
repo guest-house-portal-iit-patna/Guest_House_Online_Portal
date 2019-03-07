@@ -1,5 +1,5 @@
-<?php include('server.php');
-include('templates/navbar.php');
+<?php require_once('server.php');
+require_once('templates/navbar.php');
 
 //IF user is not logged in, this page cannot be accessed.
 if(empty($_SESSION['username'])) {

@@ -24,8 +24,13 @@ if(empty($_SESSION['username'])) {
   	<div class="header-nav">
   	  <h1>IIT PATNA</h1>
   	  <h2>Guest House Booking Portal</h2>
+      <?php if(isset($_SESSION['username'])) {?>
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5F9EA0; ">
-        <a class="navbar-brand" href="/Guest_House_Online_Portal/index.php" style="font-size: inherit; color: #fff;">Home</a>
+        <a class="navbar-brand" href="/Guest_House_Online_Portal/admin/adminhome.php" style="font-size: inherit; color: #fff;">Home</a>
+      <?php } else { ?>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5F9EA0; ">
+          <a class="navbar-brand" href="/Guest_House_Online_Portal/index.php" style="font-size: inherit; color: #fff;">Home</a>
+      <?php } ?>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">

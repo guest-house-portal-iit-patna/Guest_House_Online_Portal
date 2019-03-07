@@ -1,5 +1,5 @@
-<?php include('server.php');
-include('navbar.php');
+<?php require_once('server.php');
+require_once('templates/navbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
