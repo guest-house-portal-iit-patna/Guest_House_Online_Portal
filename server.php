@@ -7,7 +7,9 @@ $errors = array();
 //connect to database
 
 $db= mysqli_connect('localhost','root','','registration');
-
+if (!$db) {
+  die("Connection failed: " . mysqli_connect_error());
+}
 //if the register button is clicked
 
 if(isset($_POST['register']))

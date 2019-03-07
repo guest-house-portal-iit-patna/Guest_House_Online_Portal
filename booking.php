@@ -1,5 +1,5 @@
 <?php include('server.php');
-include('template/navbar.php'); ?>
+include('templates/navbar.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +15,7 @@ include('template/navbar.php'); ?>
   <link rel="stylesheet"   href="css/bookingform.css">
 </head>
 <body>
- <div id="root">
+ <div id="root" style="margin-bottom:200px; margin-top:-50px;">
   <script src="main.js" type="text/javascript"></script>
   <div class="container">
     <form id="contact" action="bookingform.php" method="post">

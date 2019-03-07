@@ -23,7 +23,7 @@
 <div class="header">
   <h2>Admin Login</h2>
 </div>
-<form class="login" action="adminlogin.php" method="post" style="margin-bottom:300px;">
+<form class="login" action="adminlogin.php" method="post" style="margin-bottom:200px;">
 
   <!-- The erros are displayed here-->
   <?php include('errors.php'); ?>
