@@ -1,8 +1,7 @@
-<?php include('../server.php');
+<?php require_once('../server.php');
 //IF user is not logged in, this page cannot be accessed.
 if(empty($_SESSION['username'])) {
-
-   header('location: login.php');
+   header('location: ../login.php');
 }
 ?>
 <!DOCTYPE html>
@@ -32,7 +31,7 @@ if(empty($_SESSION['username'])) {
         <ul class="navbar-nav mr-auto">
 
           <li class="nav-item active">
-            <a class="nav-link" href="https://www.iitp.ac.in/hostel/reachIITP.html" style="color: #fff;">Requests</a>
+            <a class="nav-link" href="viewrequests.php" style="color: #fff;">Requests</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="https://www.iitp.ac.in/" style="color: #fff;">Bookings</a>
