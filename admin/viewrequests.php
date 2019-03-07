@@ -42,8 +42,8 @@
   //   $mail->Host = "smtp.gmail.com";
   //   $mail->Port = 465; // or 587
   //   $mail->IsHTML(true);
-  //   $mail->Username = "vatsal.eliot@gmail.com";
-  //   $mail->Password = "mkaqaumuchffjcmh";
+  //   $mail->Username = "theoriginalmk7@gmail.com";
+  //   $mail->Password = "etsH7BPvtXmkVgb";
   //   $mail->SetFrom("singh99sahil.gs@gmail.com");
   //   $mail->Subject = "Welcome to IIT PATNA Guest House Booking Portal";
   //   $mail->Body = "Hi ".$username.",<br><br>Welcome to the Guest House booking portal of IIT Patna. <br> Your request has beem accepted.<br> <br> Thank you";

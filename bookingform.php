@@ -43,21 +43,22 @@ $room_nonveg_breakfast=$_POST['nonveg_breakfast'];
 $room_nonveg_lunch=$_POST['nonveg_lunch'];
 $room_nonveg_dinner=$_POST['nonveg_dinner'];
 
+$random_id = bin2hex(random_bytes(8));
 //guest info
 //guest address
 //indentor info
 //room
 
-$sql= "INSERT INTO guestinfo (username,guestname,guestphone) VALUES ('$username','$guest_name','$phone_number')";
+$sql= "INSERT INTO guestinfo (id,username,guestname,guestphone) VALUES ('$random_id','$username','$guest_name','$phone_number')";
 mysqli_query($dbc,$sql);
 
-$sql= "INSERT INTO guestaddress (username,guestname,appartment,city,state,pin) VALUES ('$username','$guest_name','$appartment_number','$city','$state','$pin')";
+$sql= "INSERT INTO guestaddress (id,username,guestname,appartment,city,state,pin) VALUES ('$random_id','$username','$guest_name','$appartment_number','$city','$state','$pin')";
 mysqli_query($dbc,$sql);
 
-$sql= "INSERT INTO indentorinfo (username,guestname,employeeid,name,designation,department,phone,email) VALUES ('$username','$guest_name','$employee_id','$indentorname','$designation','$department','$phone','$email')";
+$sql= "INSERT INTO indentorinfo (id,username,guestname,employeeid,name,designation,department,phone,email) VALUES ('$random_id','$username','$guest_name','$employee_id','$indentorname','$designation','$department','$phone','$email')";
 mysqli_query($dbc,$sql);
 
-$sql= "INSERT INTO room (username,guestname,number_people,payment,number_rooms,accomodation,arrival,departure,purpose,vegbreakfast,veglunch,vegdinner,nonvegbreakfast,nonveglunch,nonvegdinner) VALUES ('$username','$guest_name','$room_number_people','$room_payment','$room_number_rooms','$room_accomodation','$room_arrival','$room_departure','$room_purpose','$room_veg_breakfast','$room_veg_lunch','$room_veg_dinner','$room_nonveg_breakfast','$room_nonveg_lunch','$room_nonveg_dinner')";
+$sql= "INSERT INTO room (id,username,guestname,number_people,payment,number_rooms,accomodation,arrival,departure,purpose,vegbreakfast,veglunch,vegdinner,nonvegbreakfast,nonveglunch,nonvegdinner) VALUES ('$random_id','$username','$guest_name','$room_number_people','$room_payment','$room_number_rooms','$room_accomodation','$room_arrival','$room_departure','$room_purpose','$room_veg_breakfast','$room_veg_lunch','$room_veg_dinner','$room_nonveg_breakfast','$room_nonveg_lunch','$room_nonveg_dinner')";
 mysqli_query($dbc,$sql);
 
 {
@@ -73,11 +74,11 @@ mysqli_query($dbc,$sql);
   $mail->Host = "smtp.gmail.com";
   $mail->Port = 465; // or 587
   $mail->IsHTML(true);
-  $mail->Username = "vatsal.eliot@gmail.com";
-  $mail->Password = "mkaqaumuchffjcmh";
+  $mail->Username = "theoriginalmk7@gmail.com";
+  $mail->Password = "etsH7BPvtXmkVgb";
   $mail->SetFrom("singh99sahil.gs@gmail.com");
   $mail->Subject = "Booking request received.";
-  $mail->Body = "Hello ".$username.",<br><br>Your request for booking has been registered.<br>You will be suitably notified the status of your booking. <br>
+  $mail->Body = "Hello ".$username.",<br><br>Your request for booking has been registered.<br>Your booking ID is ".$random_id.". <br>You will be suitably notified the status of your booking. <br>
   <br> Thank you";
   $mail->AddAddress($email);
 
