@@ -17,6 +17,21 @@ if(empty($_SESSION['username'])) {
 
 <link rel="stylesheet" type="text/css" href="../css/index.css">
 
+<style media="screen">
+.nav-pills .pill-1 .nav-link:not(.active) {
+    /* background-color: rgba(95,158,160,0.7); */
+    background-color: #fff;
+    color: #5F9EA0;
+}
+
+.nav-pills .pill-1 .nav-link {
+    background-color: #5F9EA0;
+    color: white;
+}
+
+
+</style>
+
 </head>
 <body>
   <div id="root">

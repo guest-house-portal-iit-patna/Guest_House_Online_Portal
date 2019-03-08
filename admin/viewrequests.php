@@ -5,7 +5,7 @@
 
   //upon approval
 
-  $activeTab = "1";
+  $activeTab = "2";
   if(isset($_POST['approve'])){
 
     //connect to database
@@ -107,21 +107,19 @@
     }
     $activeTab = $_GET['tab'];
   }
-  ?>
-
 ?>
 
 <!--html code-->
-
+<br>
 <div class="container" style="width:80%;">
-  <ul class="nav nav-tabs" id="companiesTab" role="tablist">
-    <li class="nav-item">
+  <ul class="nav nav-pills nav-justified" id="companiesTab" role="tablist" >
+    <li class="nav-item pill-1">
       <a class="nav-link <?php if($activeTab==1){echo 'active';} ?>" id="home-tab" data-toggle="tab" href="#accepted" role="tab" aria-controls="home" aria-selected="true">Accepted</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item pill-1">
       <a class="nav-link <?php if($activeTab==2){echo 'active';} ?>" id="profile-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="profile" aria-selected="false">Pending</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item pill-1">
       <a class="nav-link <?php if($activeTab==3){echo 'active';} ?>" id="contact-tab" data-toggle="tab" href="#rejected" role="tab" aria-controls="contact" aria-selected="false">Rejected</a>
     </li>
   </ul>
@@ -134,7 +132,7 @@
             <th scope="col">Username</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
-            <th scope="col">Action</th>
+            <th scope="col">Change Status</th>
           </tr>
         </thead>
 
@@ -157,7 +155,7 @@
                         '<td>' . $row["guestname"] . '</td>' .
                         '<td>' . $row["guestphone"] . '</td>' .
                         '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=1" method="post">' .
-                        '<button type="reject" class="btn btn-danger" name="reject">Reject</button></form></td>' .
+                        '<button type="reject" class="btn btn-outline-danger" name="reject">Reject</button></form></td>' .
                     '</tr>';
               $curr = $curr + 1;
             }
@@ -178,7 +176,8 @@
             <th scope="col">Username</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
-            <th scope="col">Action</th>
+            <th scope="col">Change Status</th>
+            <th scope="col">Delete Request</th>
           </tr>
         </thead>
         <?php
@@ -199,8 +198,10 @@
                         '<td>' . $row["guestname"] . '</td>' .
                         '<td>' . $row["guestphone"] . '</td>' .
                         '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=2" method="post">' .
-                        '<button type="approve" class="btn btn-success" name="approve">Approve</button> ' .
-                        '<button type="reject" class="btn btn-danger" name="reject">Reject</button></form></td>' .
+                        '<button type="approve" class="btn btn-outline-success" name="approve">Approve</button> ' .
+                        '<button type="reject" class="btn btn-outline-danger" name="reject">Reject</button></form></td>' .
+                        '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post">' .
+                        '<button type="delete" class="btn btn-outline-danger" name="delete">Delete</button></form></td>' .
                     '</tr>';
               $curr = $curr + 1;
             }
@@ -221,7 +222,8 @@
             <th scope="col">Username</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
-            <th scope="col">Action</th>
+            <th scope="col">Change Status</th>
+            <th scope="col">Delete Request</th>
           </tr>
         </thead>
         <?php
@@ -241,11 +243,22 @@
                               '<td>' . $row["username"] . '</td>' .
                               '<td>' . $row["guestname"] . '</td>' .
                               '<td>' . $row["guestphone"] . '</td>' .
-                              '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post" style="display:inline-block; float:left; margin-right:-25px;">' .
-                              '<button type="approve" class="btn btn-success" name="approve">Approve</button></form>' .
-                              '<form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post" style="margin-left:-100px; display:inline-block; float:right;">' .
-                              '<button type="delete" class="btn btn-danger" name="delete">Delete</button></form></td>' .
+                              '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post" >' .
+                              '<button type="approve" class="btn btn-outline-info" name="approve">Approve</button></form></td>' .
+                              '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post">' .
+                              '<button type="delete" class="btn btn-outline-danger" name="delete">Delete</button></form></td>' .
                           '</tr>';
+
+                          // echo '<tr><th scope="row">' . $curr . '</th>' .
+                          //           '<td>' . $row["username"] . '</td>' .
+                          //           '<td>' . $row["guestname"] . '</td>' .
+                          //           '<td>' . $row["guestphone"] . '</td>' .
+                          //           '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post" style="display:inline-block; float:left; margin-right:-50px;">' .
+                          //           '<button type="approve" class="btn btn-success" name="approve">Approve</button></form> .
+                          //           '<form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post" style="margin-left:-150px; display:inline-block; float:right;">' .
+                          //           '<button type="delete" class="btn btn-danger" name="delete">Delete</button></form></td>' .
+                          //       '</tr>';
+
               $curr = $curr + 1;
             }
           ?>
