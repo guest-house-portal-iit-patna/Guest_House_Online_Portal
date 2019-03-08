@@ -8,33 +8,8 @@
     header('location: login.php');
   }
 
-
-  if(isset($_POST['delete'])){
-
-    //connect to database
-
-    $dbc= mysqli_connect('localhost','root','','booking');
-    if (!$dbc) {
-      die("Connection failed: " . mysqli_connect_error());
-    }
-    $id = mysqli_real_escape_string($dbc, trim($_GET['id']));
-    $query="SELECT username FROM guestinfo WHERE id='$id'";
-    $username=mysqli_query($dbc, $query);
-    $update_status_query = "DELETE FROM guestinfo  WHERE id='$id'";
-    $update_status = mysqli_query($dbc, $update_status_query);
-    if(!$update_status){
-      echo '<div class="container"><div class="alert alert-warning alert-dismissible fade show" role="alert">' .
-        'Failed to update. Please try again.' . '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
-        '<span aria-hidden="true">&times;</span></button></div></div>';
-      die("QUERY FAILED ".mysqli_error($dbc));
-    } else {
-      echo '<div class="container"><div class="alert alert-success alert-dismissible fade show" role="alert">' .
-          'Successfully Updated.<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
-          '<span aria-hidden="true">&times;</span></button></div></div>';
-    }
-    header('location: checkbooking.php?username='.$username);
-  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,7 +58,7 @@
                         '<td>' . $row["guestname"] . '</td>' .
                         '<td>' . $row["guestphone"] . '</td>' .'<td>' . $row["status"] . '</td>'
                          .
-                         '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post" style="border:none;">' .
+                         '<td><form action="deletebooking.php?id=' . $row["id"] . '" method="post" style="border:none;">' .
                          '<button type="delete" class="btn btn-outline-danger" name="delete" style="margin-top:-25px;">Cancel</button></form></td>' .
                     '</tr>';
               $curr = $curr + 1;
