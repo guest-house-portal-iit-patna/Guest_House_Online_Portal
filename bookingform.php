@@ -15,7 +15,7 @@ There was some problem while using arrays in the form, look into it later and le
 // $room=array("number_people"=>" ","payment"=>" ","number_rooms"=>" ", "accomodation"=>" ", "arrival"=>" ","departure"=>" ","purpose"=>" ","veg_breakfast"=>" ","veg_lunch"=>" ","veg_dinner"=>" ","nonveg_breakfast"=>" ","nonveg_lunch"=>" ","nonveg_dinner"=>" ");
 
 //connect to database
-$dbc=mysqli_connect('localhost','root','','booking');
+$dbc=mysqli_connect('localhost','root','','guesthouse');
 
 $guest_name=$_POST['guest_name'];
 $phone_number=$_POST['phone_number'];

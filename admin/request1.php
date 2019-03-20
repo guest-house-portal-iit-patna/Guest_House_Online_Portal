@@ -1,10 +1,10 @@
 <?php
   require_once ('../server.php');
-  $dbc= mysqli_connect('localhost','root','','booking');
+  $dbc= mysqli_connect('localhost','root','','guesthouse');
   if (!$dbc) {
     die("Connection failed: " . mysqli_connect_error());
   }
-  
+
   $query= "SELECT * FROM guestinfo";
   $array = array();
   // look through query

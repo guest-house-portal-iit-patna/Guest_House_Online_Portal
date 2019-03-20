@@ -4,7 +4,7 @@
   require_once('../templates/navbar.php');
 
   // Connect to Database
-  $dbc= mysqli_connect('localhost','root','','registration');
+  $dbc= mysqli_connect('localhost','root','','guesthouse');
   if (!$dbc) {
     die("Connection failed: " . mysqli_connect_error());
   }

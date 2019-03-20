@@ -6,7 +6,7 @@ $email="";
 $errors = array();
 //connect to database
 
-$db= mysqli_connect('localhost','root','','registration');
+$db= mysqli_connect('localhost','root','','guesthouse');
 if (!$db) {
   die("Connection failed: " . mysqli_connect_error());
 }
