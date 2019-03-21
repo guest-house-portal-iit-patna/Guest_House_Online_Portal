@@ -40,7 +40,7 @@
         </thead>
 
         <?php
-        $dbc= mysqli_connect('localhost','root','','booking');
+        $dbc= mysqli_connect('localhost','root','','guesthouse');
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
