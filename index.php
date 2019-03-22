@@ -1,4 +1,7 @@
-<?php include('server.php');?>
+<?php include('server.php');
+if(!isset($_SESSION['user_role']))
+$_SESSION['user_role']="guest";
+?>
 
 <!DOCTYPE html>
 <html>
