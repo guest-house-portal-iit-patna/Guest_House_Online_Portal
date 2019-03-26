@@ -56,6 +56,9 @@ if(empty($_SESSION['username'])) {
           <li class="nav-item active">
             <a class="nav-link" href="https://www.iitp.ac.in/" style="color: #fff;">Bookings</a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="rooms.php" style="color: #fff;">Rooms</a>
+          </li>
 
         </ul>
       </div>
