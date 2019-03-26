@@ -11,7 +11,7 @@ There was some problem while using arrays in the form, look into it later and le
 */
 
 // $address=array("appartment_number"=>" ","city"=>" ","state"=>" ","pin"=>" ");
-// $indentor=array("employee_id"=>" ","name"=>" ", "designation"=>" ","department"=>" ",,"phone"=>" ","email"=>" " );
+// $indentor=array("employee_id"=>" ","indentorname"=>" ", "designation"=>" ","department"=>" ",,"phone"=>" ","email"=>" " );
 // $room=array("number_people"=>" ","payment"=>" ","number_rooms"=>" ", "accomodation"=>" ", "arrival"=>" ","departure"=>" ","purpose"=>" ","veg_breakfast"=>" ","veg_lunch"=>" ","veg_dinner"=>" ","nonveg_breakfast"=>" ","nonveg_lunch"=>" ","nonveg_dinner"=>" ");
 
 //connect to database
@@ -44,10 +44,13 @@ $room_nonveg_lunch=$_POST['nonveg_lunch'];
 $room_nonveg_dinner=$_POST['nonveg_dinner'];
 
 $random_id = bin2hex(random_bytes(8));
+
 //guest info
 //guest address
 //indentor info
 //room
+//all info is finally saved in a single table 'bookings'.
+
 
 $sql= "INSERT INTO guestinfo (id,username,guestname,guestphone) VALUES ('$random_id','$username','$guest_name','$phone_number')";
 mysqli_query($dbc,$sql);
@@ -55,11 +58,16 @@ mysqli_query($dbc,$sql);
 $sql= "INSERT INTO guestaddress (id,username,guestname,appartment,city,state,pin) VALUES ('$random_id','$username','$guest_name','$appartment_number','$city','$state','$pin')";
 mysqli_query($dbc,$sql);
 
-$sql= "INSERT INTO indentorinfo (id,username,guestname,employeeid,name,designation,department,phone,email) VALUES ('$random_id','$username','$guest_name','$employee_id','$indentorname','$designation','$department','$phone','$email')";
+$sql= "INSERT INTO indentorinfo (id,username,guestname,employeeid,indentorname,designation,department,phone,email) VALUES ('$random_id','$username','$guest_name','$employee_id','$indentorname','$designation','$department','$phone','$email')";
 mysqli_query($dbc,$sql);
 
-$sql= "INSERT INTO room (id,username,guestname,number_people,payment,number_rooms,accomodation,arrival,departure,purpose,vegbreakfast,veglunch,vegdinner,nonvegbreakfast,nonveglunch,nonvegdinner) VALUES ('$random_id','$username','$guest_name','$room_number_people','$room_payment','$room_number_rooms','$room_accomodation','$room_arrival','$room_departure','$room_purpose','$room_veg_breakfast','$room_veg_lunch','$room_veg_dinner','$room_nonveg_breakfast','$room_nonveg_lunch','$room_nonveg_dinner')";
+$sql= "INSERT INTO roomrequirement (id,username,guestname,number_people,payment,number_rooms,accomodation,arrival,departure,purpose,vegbreakfast,veglunch,vegdinner,nonvegbreakfast,nonveglunch,nonvegdinner) VALUES ('$random_id','$username','$guest_name','$room_number_people','$room_payment','$room_number_rooms','$room_accomodation','$room_arrival','$room_departure','$room_purpose','$room_veg_breakfast','$room_veg_lunch','$room_veg_dinner','$room_nonveg_breakfast','$room_nonveg_lunch','$room_nonveg_dinner')";
 mysqli_query($dbc,$sql);
+
+$sql= "INSERT INTO bookings (id,username,guestname,guestphone,appartment,city,state,pin,employeeid,indentorname,designation,department,phone,email,number_people,payment,number_rooms,accomodation,arrival,departure,purpose,vegbreakfast,veglunch,vegdinner,nonvegbreakfast,nonveglunch,nonvegdinner) VALUES ('$random_id','$username','$guest_name','$phone_number','$appartment_number','$city','$state','$pin','$employee_id','$indentorname','$designation','$department','$phone','$email','$room_number_people','$room_payment','$room_number_rooms','$room_accomodation','$room_arrival','$room_departure','$room_purpose','$room_veg_breakfast','$room_veg_lunch','$room_veg_dinner','$room_nonveg_breakfast','$room_nonveg_lunch','$room_nonveg_dinner')";
+mysqli_query($dbc,$sql);
+
+//Mailing
 
 {
   // redirect to homepage

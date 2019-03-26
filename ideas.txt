@@ -1,3 +1,6 @@
 Calender view
 Add rooms option in adminlogin
 show rooms
+logout on every page
+security issues
+user_role= admin
