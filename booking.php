@@ -1,5 +1,7 @@
 <?php include('server.php');
-include('templates/navbar.php'); ?>
+include('templates/navbar.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
