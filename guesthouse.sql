@@ -73,6 +73,7 @@ CREATE TABLE `roomrequirement` (
 
 CREATE TABLE `rooms` (
  `room` varchar(256) NOT NULL,
+ `type` varchar(256) NOT NULL,
  `status` varchar(256) NOT NULL DEFAULT 'empty',
  `id` varchar(256) NOT NULL DEFAULT 'None',
  `guestname` varchar(256) NOT NULL DEFAULT 'None',

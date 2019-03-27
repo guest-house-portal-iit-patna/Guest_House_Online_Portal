@@ -26,6 +26,7 @@ $activeTab = "1";
            <tr>
              <th scope="col">S.No.</th>
              <th scope="col">Room Number</th>
+             <th scope="col">Room Type</th>
              <th scope="col">Id</th>
              <th scope="col">Guest Name</th>
              <th scope="col">Position</th>
@@ -52,6 +53,7 @@ $activeTab = "1";
              while($row = mysqli_fetch_array($data)){
                echo '<tr><th scope="row">' . $curr . '</th>' .
                          '<td>' . $row["room"] . '</td>' .
+                         '<td>' . $row["type"] . '</td>' .
                          '<td>' . $row["status"] . '</td>' .
                          '<td>' . $row["id"] . '</td>' .
                          '<td>' . $row["guestname"] . '</td>' .
@@ -78,6 +80,7 @@ $activeTab = "1";
            <tr>
              <th scope="col">S.No.</th>
              <th scope="col">Room Number</th>
+             <th scope="col">Room Type</th>
              <th scope="col">Id</th>
              <th scope="col">Guest Name</th>
              <th scope="col">Position</th>
@@ -102,6 +105,7 @@ $activeTab = "1";
              while($row = mysqli_fetch_array($data)){
                echo '<tr><th scope="row">' . $curr . '</th>' .
                          '<td>' . $row["room"] . '</td>' .
+                         '<td>' . $row["type"] . '</td>' .
                          '<td>' . $row["status"] . '</td>' .
                          '<td>' . $row["id"] . '</td>' .
                          '<td>' . $row["guestname"] . '</td>' .
@@ -121,6 +125,7 @@ $activeTab = "1";
            </tr>
          <?php } ?>
        </table>
+
      </div>
    </div>
  </div>
