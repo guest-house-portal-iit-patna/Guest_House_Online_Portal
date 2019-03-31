@@ -16,8 +16,47 @@ if (!$dbc) {
     $type = $_POST['type'];
     $position= $_POST['position'];
     $query = "INSERT INTO rooms (room,type,roomposition) VALUES ('$number','$type','$position')";
-    $data = mysqli_query($dbc, $query);
+    $update_status = mysqli_query($dbc, $query);
+    // var_dump($update_status);
+    if(!$update_status){
+      echo '<div class="container"><div class="alert alert-warning alert-dismissible fade show" role="alert">' .
+        'Failed to update. Please try again.' . '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
+        '<span aria-hidden="true">&times;</span></button></div></div>';
+      die("QUERY FAILED ".mysqli_error($dbc));
+    } else {
+      echo '<div class="container"><div class="alert alert-success alert-dismissible fade show" role="alert">' .
+          'Successfully Updated.<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
+          '<span aria-hidden="true">&times;</span></button></div></div>';
+    }
+    $activeTab = "2";
 }
+
+
+  if(isset($_POST['delete'])){
+
+    //connect to database
+
+    $dbc= mysqli_connect('localhost','root','','guesthouse');
+    if (!$dbc) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $serial = mysqli_real_escape_string($dbc, trim($_GET['serial']));
+
+    $update_status_query = "DELETE FROM rooms WHERE serial='$serial'";
+    $update_status = mysqli_query($dbc, $update_status_query);
+    if(!$update_status){
+      echo '<div class="container"><div class="alert alert-warning alert-dismissible fade show" role="alert">' .
+        'Failed to update. Please try again.' . '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
+        '<span aria-hidden="true">&times;</span></button></div></div>';
+      die("QUERY FAILED ".mysqli_error($dbc));
+    } else {
+      echo '<div class="container"><div class="alert alert-success alert-dismissible fade show" role="alert">' .
+          'Successfully Updated.<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
+          '<span aria-hidden="true">&times;</span></button></div></div>';
+    }
+    $activeTab = "2";
+  }
  ?>
 
  <!--html code-->
@@ -108,7 +147,7 @@ if (!$dbc) {
          if (!$dbc) {
            die("Connection failed: " . mysqli_connect_error());
          }
-             $query = "SELECT room,type,status,id,guestname,roomposition,username,indentorname,arrival,departure FROM rooms WHERE status='empty'";
+             $query = "SELECT serial,room,type,status,id,guestname,roomposition,username,indentorname,arrival,departure FROM rooms WHERE status='empty'";
            $data = mysqli_query($dbc, $query);
            if(mysqli_num_rows($data) != 0){
          ?>
@@ -121,6 +160,8 @@ if (!$dbc) {
                          '<td>' . $row["type"] . '</td>' .
                          '<td>' . $row["status"] . '</td>' .
                          '<td>' . $row["roomposition"] . '</td>' .
+                         '<td><form action="' . $_SERVER['PHP_SELF'] . '?serial=' . $row["serial"] . '&tab=3" method="post">' .
+                         '<button type="delete" class="btn btn-outline-danger" name="delete">Delete</button></form></td>' .
                      '</tr>';
                $curr = $curr + 1;
              }
@@ -165,7 +206,7 @@ if (!$dbc) {
                  </div>
                  </td>
                  <td>
-                 <button type="submit" class="btn btn-outline-info" name="add">Submit</button>
+                 <button type="submit" class="btn btn-outline-info" name="add" >Submit</button>
                  </td>
                </div>
              </form>
