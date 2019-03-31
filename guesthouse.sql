@@ -72,6 +72,7 @@ CREATE TABLE `roomrequirement` (
 
 
 CREATE TABLE `rooms` (
+ `serial` int(11) NOT NULL AUTO_INCREMENT,
  `room` varchar(256) NOT NULL,
  `type` varchar(256) NOT NULL,
  `status` varchar(256) NOT NULL DEFAULT 'empty',
@@ -82,7 +83,7 @@ CREATE TABLE `rooms` (
  `indentorname` varchar(256) NOT NULL DEFAULT 'None',
  `arrival` date NOT NULL,
  `departure` date NOT NULL,
- PRIMARY KEY (`id`)
+ PRIMARY KEY (`serial`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
