@@ -140,6 +140,7 @@ if (!$dbc) {
              <th scope="col">Room Type</th>
              <th scope="col">Status</th>
              <th scope="col">Position</th>
+             <th scope="col">Delete</th>
            </tr>
          </thead>
          <?php
