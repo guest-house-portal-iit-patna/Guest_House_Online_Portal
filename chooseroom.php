@@ -15,6 +15,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/matrix.css">
+
+  <script type="text/javascript" language="javascript">
+  function checkThis(oCheckbox, limit)
+  {
+  	var el, i = 0, n = limit, oForm = oCheckbox.form;
+  	while (el = oForm.elements[i++])
+  	{
+  		if (el.className == 'single-checkbox' && el.checked)
+  			--n;
+  		if (n < 0)
+  		{
+  			alert('Please select no more than ' + limit + ' checkboxes.')
+  			return false;
+  		}
+  	}
+  	return true;
+  }
+  </script>
+
   </head>
   <body class="root">
     <?php require_once("templates/matrix.php"); ?>

@@ -27,6 +27,7 @@ if(mysqli_num_rows($data) != 0){
     <div class="screen"></div>
     <h3 class="select-text">Please select your rooms.</h3>
   </div>
+  <form class="form" id="room" action="chosenrooms.php" method="post" name="room">
   <ol class="cabin">
     <li class="rows row--1">
       <ol class="rooms" type="A">
@@ -36,13 +37,13 @@ if(mysqli_num_rows($data) != 0){
           if ($row1["roomposition"]=="1st floor") {
             if($row1["status"]=="empty"){
           echo '<li class="room">
-            <input type="checkbox" id="'.$row1["room"].'" />
+            <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" value="'.$row1["room"].'" id="'.$row1["room"].'" />
             <label for="'.$row1["room"].'">'.$row1["room"].'</label>
           </li>';
         }
         else {
           echo '<li class="room">
-            <input type="checkbox" disabled id="'.$row1["room"].'" />
+            <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row1["room"].'" id="'.$row1["room"].'" />
             <label for="'.$row1["room"].'">'.$row1["room"].'</label>
           </li>';
         }
@@ -63,13 +64,13 @@ if(mysqli_num_rows($data) != 0){
           if ($row2["roomposition"]=="2nd floor") {
             if($row2["status"]=="empty"){
           echo '<li class="room">
-            <input type="checkbox" id="'.$row2["room"].'" />
+            <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" value="'.$row2["room"].'" id="'.$row2["room"].'" />
             <label for="'.$row2["room"].'">'.$row2["room"].'</label>
           </li>';
         }
         else {
           echo '<li class="room">
-            <input type="checkbox" disabled id="'.$row2["room"].'" />
+            <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row2["room"].'" id="'.$row2["room"].'" />
             <label for="'.$row2["room"].'">'.$row2["room"].'</label>
           </li>';
         }
@@ -90,13 +91,13 @@ if(mysqli_num_rows($data) != 0){
              if ($row3["roomposition"]=="3rd floor") {
                if($row3["status"]=="empty"){
              echo '<li class="room">
-               <input type="checkbox" id="'.$row3["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" value="'.$row3["room"].'" id="'.$row3["room"].'" />
                <label for="'.$row3["room"].'">'.$row3["room"].'</label>
              </li>';
            }
            else {
              echo '<li class="room">
-               <input type="checkbox" disabled id="'.$row3["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row3["room"].'" id="'.$row3["room"].'" />
                <label for="'.$row3["room"].'">'.$row3["room"].'</label>
              </li>';
            }}}}?>
@@ -113,13 +114,13 @@ if(mysqli_num_rows($data) != 0){
              if ($row4["roomposition"]=="4th floor") {
                if($row4["status"]=="empty"){
              echo '<li class="room">
-               <input type="checkbox" id="'.$row4["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick="  checkThis(this,1)" value="'.$row4["room"].'" id="'.$row4["room"].'" />
                <label for="'.$row4["room"].'">'.$row4["room"].'</label>
              </li>';
            }
            else {
              echo '<li class="room">
-               <input type="checkbox" disabled id="'.$row4["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row4["room"].'" id="'.$row4["room"].'" />
                <label for="'.$row4["room"].'">'.$row4["room"].'</label>
              </li>';
            }}}}?>
@@ -136,13 +137,13 @@ if(mysqli_num_rows($data) != 0){
              if ($row5["roomposition"]=="5th floor") {
                if($row5["status"]=="empty"){
              echo '<li class="room">
-               <input type="checkbox" id="'.$row5["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" value="'.$row5["room"].'" id="'.$row5["room"].'" />
                <label for="'.$row5["room"].'">'.$row5["room"].'</label>
              </li>';
            }
            else {
              echo '<li class="room">
-               <input type="checkbox" disabled id="'.$row5["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row5["room"].'" id="'.$row5["room"].'" />
                <label for="'.$row5["room"].'">'.$row5["room"].'</label>
              </li>';
            }}}}?>
@@ -159,13 +160,13 @@ if(mysqli_num_rows($data) != 0){
              if ($row6["roomposition"]=="6th floor") {
                if($row6["status"]=="empty"){
              echo '<li class="room">
-               <input type="checkbox" id="'.$row6["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" value="'.$row6["room"].'" id="'.$row6["room"].'" />
                <label for="'.$row6["room"].'">'.$row6["room"].'</label>
              </li>';
            }
            else {
              echo '<li class="room">
-               <input type="checkbox" disabled id="'.$row6["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row6["room"].'" id="'.$row6["room"].'" />
                <label for="'.$row6["room"].'">'.$row6["room"].'</label>
              </li>';
            }}}}?>
@@ -182,13 +183,13 @@ if(mysqli_num_rows($data) != 0){
              if ($row7["roomposition"]=="7th floor") {
                if($row7["status"]=="empty"){
              echo '<li class="room">
-               <input type="checkbox" id="'.$row7["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" value="'.$row7["room"].'" id="'.$row7["room"].'" />
                <label for="'.$row7["room"].'">'.$row7["room"].'</label>
              </li>';
            }
            else {
              echo '<li class="room">
-               <input type="checkbox" disabled id="'.$row7["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row7["room"].'" id="'.$row7["room"].'" />
                <label for="'.$row7["room"].'">'.$row7["room"].'</label>
              </li>';
            }}}}?>
@@ -205,20 +206,26 @@ if(mysqli_num_rows($data) != 0){
              if ($row8["roomposition"]=="8th floor") {
                if($row8["status"]=="empty"){
              echo '<li class="room">
-               <input type="checkbox" id="'.$row8["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" value="'.$row8["room"].'" id="'.$row8["room"].'" />
                <label for="'.$row8["room"].'">'.$row8["room"].'</label>
              </li>';
            }
            else {
              echo '<li class="room">
-               <input type="checkbox" disabled id="'.$row8["room"].'" />
+               <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row8["room"].'" id="'.$row8["room"].'" />
                <label for="'.$row8["room"].'">'.$row8["room"].'</label>
              </li>';
            }}}}?>
          </ol>
        </li>
-
       </ol>
-    </li>
-  </ol>
+      <button type="submit" class="btn btn-info" name="roomschosen" style="margin:auto; display:block;">Submit</button>
+      </form>
 </div>
+
+<script type="text/javascript">
+
+//Syntax: checkboxlimit(checkbox_reference, limit)
+checkboxlimit(document.forms.room.check_list, 2);
+
+</script>

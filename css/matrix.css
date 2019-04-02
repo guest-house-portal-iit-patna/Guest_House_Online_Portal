@@ -14,8 +14,10 @@ font-size: 16px;
 
 .building {
 margin: 20px auto;
+margin-top: 60px;
+margin-bottom: 200px;
 width: 100%;
-max-width: 700px;
+max-width: 900px;
 border-radius: 5px;
 background-color: #fff;
 padding: 20px 10px;
@@ -44,19 +46,20 @@ display: flex;
 flex-direction: row;
 flex-wrap: nowrap;
 justify-content: flex-start;
+margin-left: 40px;
 }
 .room {
 display: flex;
 flex: 0 0 8.4%;
-padding: 5px;
+padding: 4px;
 position: relative;
 margin:2px;
 }
 .room:nth-child(3) {
-margin-right: 10%;
+margin-right: 8%;
 }
 .room:nth-child(6) {
-margin-right: 10%;
+margin-right: 8%;
 }
 .room input[type="checkbox"] {
 position: absolute;
@@ -70,12 +73,12 @@ animation-duration: 300ms;
 animation-fill-mode: both;
 }
 .room input[type="checkbox"]:disabled + label {
-background: #ddd;
+background: crimson;
 text-indent: -9999px;
 overflow: hidden;
 }
 .room input[type="checkbox"]:disabled + label:after {
-content: "X";
+content: "Booked";
 text-indent: 0;
 position: absolute;
 top: 4px;
