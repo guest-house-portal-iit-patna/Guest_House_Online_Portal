@@ -219,13 +219,6 @@ if(mysqli_num_rows($data) != 0){
          </ol>
        </li>
       </ol>
-      <button type="submit" class="btn btn-info" name="roomschosen" style="margin:auto; display:block;">Submit</button>
+      <button type="submit" class="btn btn-primary" name="roomschosen" style="margin:auto; display:block;">Submit</button>
       </form>
 </div>
-
-<script type="text/javascript">
-
-//Syntax: checkboxlimit(checkbox_reference, limit)
-checkboxlimit(document.forms.room.check_list, 2);
-
-</script>

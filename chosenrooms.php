@@ -6,7 +6,7 @@ if (isset($_POST['roomschosen'])){
   echo $selected."</br>";
   }
 }
-header("location: homepage.php");
+// header("location: homepage.php");
 }
 
 ?>

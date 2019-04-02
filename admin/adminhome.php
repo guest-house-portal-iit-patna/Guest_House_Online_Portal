@@ -54,7 +54,7 @@ if(empty($_SESSION['username'])) {
             <a class="nav-link" href="viewrequests.php" style="color: #fff;">Requests</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="https://www.iitp.ac.in/" style="color: #fff;">Bookings</a>
+            <a class="nav-link" href="showrooms.php" style="color: #fff;">Bookings</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="rooms.php" style="color: #fff;">Rooms</a>
