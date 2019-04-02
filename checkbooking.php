@@ -36,6 +36,7 @@
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
             <th scope="col">Status</th>
+            <th scope="col">Cancel Request</th>
           </tr>
         </thead>
 
@@ -45,7 +46,7 @@
           die("Connection failed: " . mysqli_connect_error());
         }
         $username = mysqli_real_escape_string($dbc, trim($_GET['username']));
-        $query = "SELECT * FROM guestinfo WHERE username='$username '";
+        $query = "SELECT * FROM guestinfo WHERE username='$username'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -56,8 +57,8 @@
               echo '<tr><th scope="row">' . $curr . '</th>' .
                         '<td>' . $row["username"] . '</td>' .
                         '<td>' . $row["guestname"] . '</td>' .
-                        '<td>' . $row["guestphone"] . '</td>' .'<td>' . $row["status"] . '</td>'
-                         .
+                        '<td>' . $row["guestphone"] . '</td>' .
+                        '<td>' . $row["status"] . '</td>' .
                          '<td><form action="deletebooking.php?id=' . $row["id"] . '" method="post" style="border:none;">' .
                          '<button type="delete" class="btn btn-outline-danger" name="delete" style="margin-top:-25px;">Cancel</button></form></td>' .
                     '</tr>';
