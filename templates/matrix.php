@@ -6,20 +6,6 @@
   $query = "SELECT serial,room,type,status,id,guestname,roomposition,username,indentorname,arrival,departure FROM rooms";
 $data = mysqli_query($dbcc, $query);
 if(mysqli_num_rows($data) != 0){
-
-// while($row = mysqli_fetch_array($data))
-// {
-//   if ($row["roomposition"]=="1st floor")
-//   {
-//     $row1=$row;
-//   }
-//   if ($row["roomposition"]=="2nd floor")
-//   {
-//     $row2=$row;
-//
-//   }
-// }
-
  ?>
 
 <div class="building">

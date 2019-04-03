@@ -26,7 +26,7 @@
   			--n;
   		if (n < 0)
   		{
-  			alert('You cannot select any rooms from here. Please make a booking request instead.')
+  			alert('Editing/Viewing is not enabled yet.');
   			return false;
   		}
   	}

@@ -1,7 +1,3 @@
-<?php include('server.php');
-include('templates/navbar.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +13,9 @@ include('templates/navbar.php');
   <link rel="stylesheet"   href="css/bookingform.css">
 </head>
 <body>
+  <?php include('server.php');
+  include('templates/navbar.php');
+  ?>
  <div id="root" style="margin-bottom:200px; margin-top:-50px;">
   <script src="main.js" type="text/javascript"></script>
   <div class="container">
