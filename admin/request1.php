@@ -5,7 +5,7 @@
     die("Connection failed: " . mysqli_connect_error());
   }
 
-  $query= "SELECT * FROM guestinfo";
+  $query= "SELECT * FROM bookings";
   $array = array();
   // look through query
   $result = mysqli_query($dbc,$query);

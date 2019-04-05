@@ -19,6 +19,7 @@
   <script type="text/javascript" language="javascript">
   function checkThis(oCheckbox, limit)
   {
+    limit=4;
   	var el, i = 0, n = limit, oForm = oCheckbox.form;
   	while (el = oForm.elements[i++])
   	{

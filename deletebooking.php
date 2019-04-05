@@ -18,9 +18,9 @@
       die("Connection failed: " . mysqli_connect_error());
     }
     $id = mysqli_real_escape_string($dbc, trim($_GET['id']));
-    $query="SELECT username FROM guestinfo WHERE id='$id'";
+    $query="SELECT username FROM bookings WHERE id='$id'";
     $username=mysqli_query($dbc, $query);
-    $update_status_query = "DELETE FROM guestinfo  WHERE id='$id'";
+    $update_status_query = "DELETE FROM bookings  WHERE id='$id'";
     $update_status = mysqli_query($dbc, $update_status_query);
     header('Location: homepage.php');
     if(!$update_status){

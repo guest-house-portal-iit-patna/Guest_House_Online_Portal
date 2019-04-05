@@ -67,25 +67,9 @@ CREATE TABLE `roomrequirement` (
  `nonvegbreakfast` int(11) NOT NULL,
  `nonveglunch` int(11) NOT NULL,
  `nonvegdinner` int(11) NOT NULL,
+ `room` varchar(256) NOT NULL,
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-CREATE TABLE `rooms` (
- `serial` int(11) NOT NULL AUTO_INCREMENT,
- `room` varchar(256) NOT NULL,
- `type` varchar(256) NOT NULL,
- `status` varchar(256) NOT NULL DEFAULT 'empty',
- `id` varchar(256) NOT NULL DEFAULT 'None',
- `guestname` varchar(256) NOT NULL DEFAULT 'None',
- `roomposition` varchar(256) NOT NULL DEFAULT 'None',
- `username` varchar(256) NOT NULL DEFAULT 'None',
- `indentorname` varchar(256) NOT NULL DEFAULT 'None',
- `arrival` date NOT NULL,
- `departure` date NOT NULL,
- PRIMARY KEY (`serial`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 CREATE TABLE `bookings` (
  `id` varchar(256) NOT NULL ,
@@ -116,5 +100,13 @@ CREATE TABLE `bookings` (
  `department` varchar(256) NOT NULL,
  `phone` varchar(256) NOT NULL,
  `email` varchar(256) NOT NULL,
+ `requestedroom` varchar(256) NOT NULL,
  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `rooms` (
+ `room` varchar(256) NOT NULL,
+ `type` varchar(256) NOT NULL,
+ `roomposition` varchar(256) NOT NULL DEFAULT 'None',
+ PRIMARY KEY (`room`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

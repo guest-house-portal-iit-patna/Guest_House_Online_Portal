@@ -12,7 +12,7 @@
   // Fetch id
   $id = $_GET['id'];
 
-  $query = "SELECT * FROM guestinfo WHERE id='". $id ."'";
+  $query = "SELECT * FROM bookings WHERE id='". $id ."'";
   $data = mysqli_query($dbc, $query);
 
   if(!$data){

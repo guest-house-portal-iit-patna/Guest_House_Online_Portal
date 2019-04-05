@@ -46,7 +46,7 @@
           die("Connection failed: " . mysqli_connect_error());
         }
         $username = mysqli_real_escape_string($dbc, trim($_GET['username']));
-        $query = "SELECT * FROM guestinfo WHERE username='$username'";
+        $query = "SELECT * FROM bookings WHERE username='$username'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>

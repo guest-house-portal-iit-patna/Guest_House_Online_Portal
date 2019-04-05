@@ -17,7 +17,7 @@
 
     $id = mysqli_real_escape_string($dbc, trim($_GET['id']));
 
-    $update_status_query = "UPDATE guestinfo SET status='accepted' WHERE id='$id'";
+    $update_status_query = "UPDATE bookings SET status='accepted' WHERE id='$id'";
     $update_status = mysqli_query($dbc, $update_status_query);
     if(!$update_status){
       echo '<div class="container"><div class="alert alert-warning alert-dismissible fade show" role="alert">' .
@@ -67,7 +67,7 @@
 
     $id = mysqli_real_escape_string($dbc, trim($_GET['id']));
 
-    $update_status_query = "UPDATE guestinfo SET status='rejected' WHERE id='$id'";
+    $update_status_query = "UPDATE bookings SET status='rejected' WHERE id='$id'";
     $update_status = mysqli_query($dbc, $update_status_query);
     if(!$update_status){
       echo '<div class="container"><div class="alert alert-warning alert-dismissible fade show" role="alert">' .
@@ -93,7 +93,7 @@
 
     $id = mysqli_real_escape_string($dbc, trim($_GET['id']));
 
-    $update_status_query = "DELETE FROM guestinfo  WHERE id='$id'";
+    $update_status_query = "DELETE FROM bookings  WHERE id='$id'";
     $update_status = mysqli_query($dbc, $update_status_query);
     if(!$update_status){
       echo '<div class="container"><div class="alert alert-warning alert-dismissible fade show" role="alert">' .
@@ -142,7 +142,7 @@
           die("Connection failed: " . mysqli_connect_error());
         }
 
-          $query = "SELECT id, username, guestname, guestphone FROM guestinfo WHERE status='accepted'";
+          $query = "SELECT id, username, guestname, guestphone FROM bookings WHERE status='accepted'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -185,7 +185,7 @@
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
-            $query = "SELECT id, username, guestname, guestphone FROM guestinfo WHERE status='pending'";
+            $query = "SELECT id, username, guestname, guestphone FROM bookings WHERE status='pending'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -231,7 +231,7 @@
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
-          $query = "SELECT id, username, guestname, guestphone FROM guestinfo WHERE status='rejected'";
+          $query = "SELECT id, username, guestname, guestphone FROM bookings WHERE status='rejected'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
