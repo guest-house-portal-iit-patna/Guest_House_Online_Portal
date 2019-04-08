@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+            use PHPMailer\PHPMailer\PHPMailer;
+            use PHPMailer\PHPMailer\Exception;
+
 $username = "";
 $email="";
 $errors = array();
@@ -56,29 +59,55 @@ if(isset($_POST['register']))
           $sql = "INSERT INTO users (username,email,password) VALUES ('$username','$email','$password')";
           if(mysqli_query($db,$sql))
           {
-            // redirect to homepage
+            // Sending mail and then redirecting to homepage
             $_SESSION['username']=$username;
             $_SESSION['success'] = "You are now logged in.";
-            require_once('PHPMailer_5.2.0/class.phpmailer.php');
-            $mail = new PHPMailer(); // create a new object
-            $mail->IsSMTP(); // enable SMTP
-            $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-            $mail->SMTPAuth = true; // authentication enabled
-            $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
-            $mail->Host = "smtp.gmail.com";
-            $mail->Port = 465; // or 587
-            $mail->IsHTML(true);
-            $mail->Username = "theoriginalmk7@gmail.com";
-            $mail->Password = "etsH7BPvtXmkVgb";
-            $mail->SetFrom("singh99sahil.gs@gmail.com");
-            $mail->Subject = "Welcome to IIT PATNA Guest House Booking Portal";
-            $mail->Body = "Hi ".$username.",<br><br>Welcome to the Guest House booking portal of IIT Patna. <br> You have succesfully been registered.<br> <br> Thank you";
-            $mail->AddAddress($email);
 
-             if(!$mail->Send()) {
-                echo "Mailer Error: " . $mail->ErrorInfo;
-             }
+            // Load Composer's autoloader
+            require 'phpmailer/vendor/autoload.php';
 
+            // Instantiation and passing `true` enables exceptions
+            $mail = new PHPMailer(true);
+
+
+                $mail->SMTPDebug = 1;                                       // Enable verbose debug output
+                $mail->isSMTP();                                            // Set mailer to use SMTP
+                $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+                $mail->Username   = 'theoriginalmk7@gmail.com';                     // SMTP username
+                $mail->Password   = 'uqmftsMfU9ustcw';                               // SMTP password
+                $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+                $mail->Port       = 587;                                    // TCP port to connect to
+
+                //Recipients
+                $mail->setFrom('theoriginalmk7@gmail.com', 'Guesthouse IIT Patna');
+                $mail->addAddress($email);     // Add a recipient
+                //$mail->addAddress('ellen@example.com');               // Name is optional
+                // $mail->addReplyTo('info@example.com', 'Information');
+                // $mail->addCC('cc@example.com');
+                // $mail->addBCC('bcc@example.com');
+
+                // // Attachments
+                // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+                // Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = 'Welcome to IIT PATNA Guest House Booking Portal';
+                $mail->Body    = "Hi ".$username.",<br><br>Welcome to the Guest House booking portal of IIT Patna.
+                 <br> You have succesfully been registered.<br> <br> Thank you";
+                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+
+
+            if ($mail->send()){
+                echo 'Email has been sent';
+            }
+            else
+                echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
+
+
+            //Heading to HOMEPAGE
             header('location: homepage.php');
         }
       }
