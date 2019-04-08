@@ -1,4 +1,9 @@
 <?php
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+
 session_start();
 
 //declaring variables
@@ -81,28 +86,11 @@ mysqli_query($dbc,$sql);
 {
   // redirect to homepage
   $_SESSION['username']=$username;
+  $_SESSION['email']=$email;
+  $_SESSION['id']=$random_id;
   $_SESSION['success'] = "You are now logged in.";
-  require_once('PHPMailer_5.2.0/class.phpmailer.php');
-  $mail = new PHPMailer(); // create a new object
-  $mail->IsSMTP(); // enable SMTP
-  $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-  $mail->SMTPAuth = true; // authentication enabled
-  $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
-  $mail->Host = "smtp.gmail.com";
-  $mail->Port = 465; // or 587
-  $mail->IsHTML(true);
-  $mail->Username = "theoriginalmk7@gmail.com";
-  $mail->Password = "etsH7BPvtXmkVgb";
-  $mail->SetFrom("singh99sahil.gs@gmail.com");
-  $mail->Subject = "Booking request received.";
-  $mail->Body = "Hello ".$username.",<br><br>Your request for booking has been registered.<br>Your booking ID is ".$random_id.". <br>You will be suitably notified the status of your booking. <br>
-  <br> Thank you";
-  $mail->AddAddress($email);
-
-   if(!$mail->Send()) {
-      echo "Mailer Error: " . $mail->ErrorInfo;
-   }
-
+ 
+  // heading to chooseroom.php
   header('location: chooseroom.php');
 }
  ?>
