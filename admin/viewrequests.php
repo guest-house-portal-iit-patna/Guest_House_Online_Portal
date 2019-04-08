@@ -1,5 +1,10 @@
 <?php
-  // Start the session
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Start the session
   require_once('../server.php');
   require_once('adminhome.php');
 
@@ -32,7 +37,7 @@
           '<span aria-hidden="true">&times;</span></button></div></div>';
     }
 
-    $query = "SELECT requestedrooms,guestname,username,indentorname,arrival,departure FROM bookings WHERE id='$id'";
+    $query = "SELECT requestedrooms,guestname,username,indentorname,arrival,departure,email FROM bookings WHERE id='$id'";
     $data1 = mysqli_query($dbc, $query);
     $arr1=mysqli_fetch_array($data1);
     $roomarr= explode(',', $arr1['requestedrooms']);
@@ -41,6 +46,7 @@
     $indentorname=$arr1['indentorname'];
     $arrival=$arr1['arrival'];
     $departure=$arr1['departure'];
+    $email = $arr1['email'];
 
     foreach ($roomarr as  $room) {
 
@@ -53,32 +59,52 @@
 
     $query = "INSERT INTO bookedrooms (room, type, floor, id, username, guestname, indentorname, arrival, departure) VALUES ('$room','$type', '$floor', '$id', '$username', '$guestname', '$indentorname', '$arrival', '$departure')";
     $update_status=mysqli_query($dbc, $query);
-    
+
   }
 
     $activeTab = $_GET['tab'];
 
-    //acceptance mail
+  //acceptance mail
 
-  //   require_once('../PHPMailer_5.2.0/class.phpmailer.php');
-  //   $mail = new PHPMailer(); // create a new object
-  //   $mail->IsSMTP(); // enable SMTP
-  //   $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-  //   $mail->SMTPAuth = true; // authentication enabled
-  //   $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
-  //   $mail->Host = "smtp.gmail.com";
-  //   $mail->Port = 465; // or 587
-  //   $mail->IsHTML(true);
-  //   $mail->Username = "theoriginalmk7@gmail.com";
-  //   $mail->Password = "etsH7BPvtXmkVgb";
-  //   $mail->SetFrom("singh99sahil.gs@gmail.com");
-  //   $mail->Subject = "Welcome to IIT PATNA Guest House Booking Portal";
-  //   $mail->Body = "Hi ".$username.",<br><br>Welcome to the Guest House booking portal of IIT Patna. <br> Your request has beem accepted.<br> <br> Thank you";
-  //   $mail->AddAddress($email);
-  //
-  //    if(!$mail->Send()) {
-  //       echo "Mailer Error: " . $mail->ErrorInfo;
-  //    }
+  // Load Composer's autoloader
+  require '../phpmailer/vendor/autoload.php';
+
+  // Instantiation and passing `true` enables exceptions
+  $mail = new PHPMailer(true);
+
+      //Server settings
+      $mail->SMTPDebug = 0;                                       // Enable verbose debug output
+      $mail->isSMTP();                                            // Set mailer to use SMTP
+      $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+      $mail->Username   = 'theoriginalmk7@gmail.com';                     // SMTP username
+      $mail->Password   = 'uqmftsMfU9ustcw';                               // SMTP password
+      $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
+      $mail->Port       = 587;                                    // TCP port to connect to
+
+      //Recipients
+      $mail->setFrom('theoriginalmk7@gmail.com', 'Guesthouse IIT PATNA');
+      $mail->addAddress($email);     // Add a recipient
+      //$mail->addAddress('ellen@example.com');               // Name is optional
+      // $mail->addReplyTo('info@example.com', 'Information');
+      // $mail->addCC('cc@example.com');
+      // $mail->addBCC('bcc@example.com');
+
+      // // Attachments
+      // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+      // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+      // Content
+      $mail->isHTML(true);                                  // Set email format to HTML
+      $mail->Subject = 'Booking request accepted.';
+      $mail->Body    = "Hi ".$username.",<br><br>Welcome to the Guest House booking portal of IIT Patna. <br> Your request has beem accepted.<br> <br> Thank you";
+      //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+      if($mail->send());
+      else
+          echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+
+
   }
 
   //upon rejection
