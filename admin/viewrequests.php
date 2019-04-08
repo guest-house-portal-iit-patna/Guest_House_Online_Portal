@@ -19,6 +19,8 @@
 
     $update_status_query = "UPDATE bookings SET status='accepted' WHERE id='$id'";
     $update_status = mysqli_query($dbc, $update_status_query);
+
+
     if(!$update_status){
       echo '<div class="container"><div class="alert alert-warning alert-dismissible fade show" role="alert">' .
         'Failed to update. Please try again.' . '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
@@ -29,6 +31,31 @@
           'Successfully Updated.<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
           '<span aria-hidden="true">&times;</span></button></div></div>';
     }
+
+    $query = "SELECT requestedrooms,guestname,username,indentorname,arrival,departure FROM bookings WHERE id='$id'";
+    $data1 = mysqli_query($dbc, $query);
+    $arr1=mysqli_fetch_array($data1);
+    $roomarr= explode(',', $arr1['requestedrooms']);
+    $username=$arr1['username'];
+    $guestname=$arr1['guestname'];
+    $indentorname=$arr1['indentorname'];
+    $arrival=$arr1['arrival'];
+    $departure=$arr1['departure'];
+
+    foreach ($roomarr as  $room) {
+
+    $query = "SELECT type,floor FROM rooms WHERE room='$room'";
+    $data2 = mysqli_query($dbc, $query);
+    $arr2=mysqli_fetch_array($data2);
+
+      $type=$arr2['type'];
+      $floor=$arr2['floor'];
+
+    $query = "INSERT INTO bookedrooms (room, type, floor, id, username, guestname, indentorname, arrival, departure) VALUES ('$room','$type', '$floor', '$id', '$username', '$guestname', '$indentorname', '$arrival', '$departure')";
+    $update_status=mysqli_query($dbc, $query);
+    
+  }
+
     $activeTab = $_GET['tab'];
 
     //acceptance mail
@@ -79,6 +106,14 @@
           'Successfully Updated.<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
           '<span aria-hidden="true">&times;</span></button></div></div>';
     }
+
+//Delete the booking in bookedrooms
+    // try {
+    //   $update_status_query = "DELETE FROM bookedrooms WHERE id='$id'";
+    //   $update_status = mysqli_query($dbc, $update_status_query);
+    // } finally {
+    // }
+
     $activeTab = $_GET['tab'];
   }
 
@@ -105,6 +140,8 @@
           'Successfully Updated.<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
           '<span aria-hidden="true">&times;</span></button></div></div>';
     }
+
+
     $activeTab = $_GET['tab'];
   }
 ?>
@@ -132,6 +169,7 @@
             <th scope="col">Username</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
+            <th scope="col">Rooms Requested</th>
             <th scope="col">Change Status</th>
           </tr>
         </thead>
@@ -142,7 +180,7 @@
           die("Connection failed: " . mysqli_connect_error());
         }
 
-          $query = "SELECT id, username, guestname, guestphone FROM bookings WHERE status='accepted'";
+          $query = "SELECT id, username, guestname, guestphone, requestedrooms FROM bookings WHERE status='accepted'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -154,6 +192,7 @@
                         '<td>' . $row["username"] . '</td>' .
                         '<td>' . $row["guestname"] . '</td>' .
                         '<td>' . $row["guestphone"] . '</td>' .
+                        '<td>' . $row["requestedrooms"] . '</td>' .
                         '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=1" method="post">' .
                         '<button type="reject" class="btn btn-outline-danger" name="reject">Reject</button></form></td>' .
                     '</tr>';
@@ -176,6 +215,7 @@
             <th scope="col">Username</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
+            <th scope="col">Rooms Requested</th>
             <th scope="col">Change Status</th>
             <th scope="col">Delete Request</th>
           </tr>
@@ -185,7 +225,7 @@
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
-            $query = "SELECT id, username, guestname, guestphone FROM bookings WHERE status='pending'";
+            $query = "SELECT id, username, guestname, guestphone, requestedrooms FROM bookings WHERE status='pending'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -197,6 +237,7 @@
                         '<td>'. $row["username"] . '</td>' .
                         '<td>' . $row["guestname"] . '</td>' .
                         '<td>' . $row["guestphone"] . '</td>' .
+                        '<td>' . $row["requestedrooms"] . '</td>' .
                         '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=2" method="post">' .
                         '<button type="approve" class="btn btn-outline-success" name="approve">Approve</button> ' .
                         '<button type="reject" class="btn btn-outline-danger" name="reject">Reject</button></form></td>' .
@@ -222,6 +263,7 @@
             <th scope="col">Username</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
+            <th scope="col">Rooms Requested</th>
             <th scope="col">Change Status</th>
             <th scope="col">Delete Request</th>
           </tr>
@@ -231,7 +273,7 @@
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
-          $query = "SELECT id, username, guestname, guestphone FROM bookings WHERE status='rejected'";
+          $query = "SELECT id, username, guestname, guestphone,requestedrooms FROM bookings WHERE status='rejected'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -243,6 +285,7 @@
                               '<td>' . $row["username"] . '</td>' .
                               '<td>' . $row["guestname"] . '</td>' .
                               '<td>' . $row["guestphone"] . '</td>' .
+                              '<td>' . $row["requestedrooms"] . '</td>' .
                               '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post" >' .
                               '<button type="approve" class="btn btn-outline-info" name="approve">Approve</button></form></td>' .
                               '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post">' .

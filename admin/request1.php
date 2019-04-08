@@ -1,3 +1,6 @@
+<!-- We dont require this file -->
+
+
 <?php
   require_once ('../server.php');
   $dbc= mysqli_connect('localhost','root','','guesthouse');

@@ -60,7 +60,7 @@
                         '<td>' . $row["guestphone"] . '</td>' .
                         '<td>' . $row["status"] . '</td>' .
                          '<td><form action="deletebooking.php?id=' . $row["id"] . '" method="post" style="border:none;">' .
-                         '<button type="delete" class="btn btn-outline-danger" name="delete" style="margin-top:-25px;">Cancel</button></form></td>' .
+                         '<button type="delete" class="btn btn-outline-danger" name="delete" style="margin-top:-25px; margin-left:-75px;">Cancel</button></form></td>' .
                     '</tr>';
               $curr = $curr + 1;
             }

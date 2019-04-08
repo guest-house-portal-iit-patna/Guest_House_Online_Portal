@@ -17,6 +17,9 @@ There was some problem while using arrays in the form, look into it later and le
 //connect to database
 $dbc=mysqli_connect('localhost','root','','guesthouse');
 
+
+
+
 $guest_name=$_POST['guest_name'];
 $phone_number=$_POST['phone_number'];
 $appartment_number=$_POST['appartment'];
@@ -43,7 +46,13 @@ $room_nonveg_breakfast=$_POST['nonveg_breakfast'];
 $room_nonveg_lunch=$_POST['nonveg_lunch'];
 $room_nonveg_dinner=$_POST['nonveg_dinner'];
 
+
+
 $random_id = bin2hex(random_bytes(8));
+$_SESSION['id']=$random_id;
+
+
+
 
 //guest info
 //guest address
@@ -94,6 +103,6 @@ mysqli_query($dbc,$sql);
       echo "Mailer Error: " . $mail->ErrorInfo;
    }
 
-  header('location: homepage.php');
+  header('location: chooseroom.php');
 }
  ?>
