@@ -2,7 +2,7 @@
   require_once('server.php');
   require_once('templates/navbar.php');
   $id=$_SESSION['id'];
-  $query="SELECT arrival,departure FROM bookings WHERE id='$id'";
+  $query="SELECT number_rooms,arrival,departure FROM bookings WHERE id='$id'";
   $dbc= mysqli_connect('localhost','root','','guesthouse');
   if (!$dbc) {
     die("Connection failed: " . mysqli_connect_error());
@@ -13,6 +13,8 @@
   //important to have a to_date and from_date wherever template/matrix.php is used.
   $from_date=$row['arrival'];
   $to_date=$row['departure'];
+  $roomlimit=$row['number_rooms'];
+
 ?>
 
 <!DOCTYPE html>
@@ -30,27 +32,9 @@
 
   <script type="text/javascript" language="javascript">
 
-  var mysql = require('mysql');
-
-  var id='<?php echo $_SESSION["id"];?>';
-
-  var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "guesthouse"
-  } );
-
-  con.connect(function(err) {
-    if (err) throw err;
-    con.query("SELECT number_rooms FROM customers WHERE id="+id, function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
-    });
-  });
-
   function checkThis(oCheckbox, limit)
   {
+    var result='<?php echo $roomlimit?>';
     limit=result;
   	var el, i = 0, n = limit, oForm = oCheckbox.form;
   	while (el = oForm.elements[i++])

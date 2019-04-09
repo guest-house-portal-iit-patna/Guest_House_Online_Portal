@@ -17,7 +17,7 @@ margin: 20px auto;
 margin-top: 60px;
 margin-bottom: 200px;
 width: 100%;
-max-width: 900px;
+max-width: 1100px;
 border-radius: 5px;
 background-color: #fff;
 padding: 20px 10px;
@@ -50,17 +50,21 @@ margin-left: 40px;
 }
 .room {
 display: flex;
-flex: 0 0 8.4%;
+flex: 0 0 6%;
 padding: 4px;
 position: relative;
 margin:2px;
 }
 .room:nth-child(3) {
-margin-right: 8%;
+margin-right: 6%;
 }
 .room:nth-child(6) {
-margin-right: 8%;
+margin-right: 6%;
 }
+.room:nth-child(9) {
+margin-right: 6%;
+}
+
 .room input[type="checkbox"] {
 position: absolute;
 opacity: 0;
@@ -105,10 +109,24 @@ animation-duration: 300ms;
 animation-fill-mode: both;
 transition-duration: 300ms;
 }
+.room:nth-child(1) label {
+  background: #003c66;
+}
+.room:nth-child(4) label {
+  background: #003c66;
+}
+.room:nth-child(7) label {
+  background: #003c66;
+}
+.room:nth-child(10) label {
+  background: #003c66;
+}
+
 .room label:hover {
 cursor: pointer;
 box-shadow: 0px 0 7px 3px #ccc;
 }
+
 
 @-webkit-keyframes rubberBand {
 0% {
