@@ -3,9 +3,12 @@
   if (!$dbcc) {
     die("Connection failed: " . mysqli_connect_error());
   }
-  $query = "SELECT room,arrival,departure FROM bookedrooms WHERE arrival>='$from_date' AND departure<='$to_date'";
+  $query = "SELECT room FROM bookedrooms WHERE arrival>='$from_date' AND departure<='$to_date'";
   $data1 = mysqli_query($dbcc, $query);
-  $roomsarr=mysqli_fetch_array($data1);
+  while($r=mysqli_fetch_assoc($data1)){
+    $roomsarr[]=$r['room'];
+  }
+
   $query = "SELECT room,type,floor FROM rooms";
   $data = mysqli_query($dbcc, $query);
 
@@ -20,14 +23,21 @@ if(mysqli_num_rows($data) != 0){
   <form class="form" id="room" action="chosenrooms.php" method="post" name="room">
   <ol class="cabin">
     <?php
+    $row2=array();
+    while($row = mysqli_fetch_array($data))
+    {
+      $row2[]=$row;
+    }
     for ($i=1; $i <=2; $i++) {
+      $j=0;
       ?>
     <li class="rows row--<?php echo $i ?>">
       <ol class="rooms" type="A">
-        <?php while($row1 = mysqli_fetch_array($data))
+        <?php foreach ($row2 as $row1)
         {
 
-          if ($row1["floor"]==$i) {
+          if ($row1["floor"]==$i)
+          {
             if(!isset($roomsarr))
             {
             echo '<li class="room">
@@ -35,29 +45,32 @@ if(mysqli_num_rows($data) != 0){
               <label for="'.$row1["room"].'">'.$row1["room"].'</label>
             </li>';
             }
-            else{
-            if(!(in_array($row1['room'],$roomsarr['room'])))
+            else
             {
-          echo '<li class="room">
-            <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" value="'.$row1["room"].'" id="'.$row1["room"].'" />
-            <label for="'.$row1["room"].'">'.$row1["room"].'</label>
-          </li>';
+              if(!(in_array($row1['room'],$roomsarr)))
+              {
+                echo '<li class="room">
+                  <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" value="'.$row1["room"].'" id="'.$row1["room"].'" />
+                  <label for="'.$row1["room"].'">'.$row1["room"].'</label>
+                </li>';
+              }
+              else
+              {
+                echo '<li class="room">
+                <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row1["room"].'" id="'.$row1["room"].'" />
+                <label for="'.$row1["room"].'">'.$row1["room"].'</label>
+                </li>';
+              }
+            }
+          }
+          $j++;
         }
-        else {
-          echo '<li class="room">
-            <input class="single-checkbox" type="checkbox" name="check_list[]" onclick=" return checkThis(this,1)" disabled value="'.$row1["room"].'" id="'.$row1["room"].'" />
-            <label for="'.$row1["room"].'">'.$row1["room"].'</label>
-          </li>';
-        }
-      }
-        }
-        }
-       }
        ?>
-        </ol>
-      </li>
-    <?php } ?>
+     </ol>
+   </li>
+    <?php } }?>
+
       </ol>
-      <button type="submit" class="btn btn-primary" name="roomschosen" style="margin:auto; display:block;">Submit</button>
+      <button type="submit" class="btn btn-primary" id="roomsubmit" name="roomschosen" style="margin:auto; display:block;">Submit</button>
       </form>
 </div>

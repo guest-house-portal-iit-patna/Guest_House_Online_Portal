@@ -84,10 +84,9 @@ if (!$dbc) {
            <tr>
              <th scope="col">S.No.</th>
              <th scope="col">Room Number</th>
-             <th scope="col">Room Type</th>
              <th scope="col">Id</th>
              <th scope="col">Guest Name</th>
-             <th scope="col">Room Floor Number</th>
+             <th scope="col">Floor No.</th>
              <th scope="col">Username</th>
              <th scope="col">Indentor Name</th>
              <th scope="col">Check-In Date</th>
@@ -101,7 +100,7 @@ if (!$dbc) {
            die("Connection failed: " . mysqli_connect_error());
          }
 
-           $query = "SELECT room,type,id,guestname,floor,username,indentorname,arrival,departure FROM rooms WHERE status='booked'";
+           $query = "SELECT room,id,guestname,floor,username,indentorname,arrival,departure FROM bookedrooms";
            $data = mysqli_query($dbc, $query);
            if(mysqli_num_rows($data) != 0){
          ?>
@@ -111,7 +110,6 @@ if (!$dbc) {
              while($row = mysqli_fetch_array($data)){
                echo '<tr><th scope="row">' . $curr . '</th>' .
                          '<td>' . $row["room"] . '</td>' .
-                         '<td>' . $row["type"] . '</td>' .
                          '<td>' . $row["id"] . '</td>' .
                          '<td>' . $row["guestname"] . '</td>' .
                          '<td>' . $row["floor"] . '</td>' .
@@ -147,7 +145,7 @@ if (!$dbc) {
          if (!$dbc) {
            die("Connection failed: " . mysqli_connect_error());
          }
-             $query = "SELECT serial,room,type,status,id,guestname,floor,username,indentorname,arrival,departure FROM rooms WHERE status='empty'";
+             $query = "SELECT room,type,floor FROM rooms ";
            $data = mysqli_query($dbc, $query);
            if(mysqli_num_rows($data) != 0){
          ?>

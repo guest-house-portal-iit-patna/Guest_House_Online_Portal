@@ -1,8 +1,7 @@
-Calender view
-Add rooms option in adminlogin
-show rooms
+Calender view (full calender)
 logout on every page
 security issues
 user_role= admin
 edit titles on every page.
 navbar dropdown (arising because aria expanded=false not toggling to true ) -> showrooms.php, bookingform.php.
+We can use modals in calender and room views
