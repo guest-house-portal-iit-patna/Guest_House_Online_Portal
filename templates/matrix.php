@@ -3,7 +3,7 @@
   if (!$dbcc) {
     die("Connection failed: " . mysqli_connect_error());
   }
-  $query = "SELECT room FROM bookedrooms WHERE arrival>='$from_date' AND departure<='$to_date'";
+  $query = "SELECT room FROM bookedrooms WHERE arrival<='$from_date' AND departure>='$from_date' OR arrival<='$to_date' AND departure>='$to_date' OR arrival>='$from_date' AND departure<='$to_date'";
   $data1 = mysqli_query($dbcc, $query);
   while($r=mysqli_fetch_assoc($data1)){
     $roomsarr[]=$r['room'];
