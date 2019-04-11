@@ -3,20 +3,12 @@
   if (!$dbcc) {
     die("Connection failed: " . mysqli_connect_error());
   }
-<<<<<<< HEAD
   $query = "SELECT room FROM bookedrooms WHERE arrival<='$from_date' AND departure>='$from_date' OR arrival<='$to_date' AND departure>='$to_date' OR arrival>='$from_date' AND departure<='$to_date'";
-=======
-  $query = "SELECT room FROM bookedrooms WHERE arrival<='$from_date' AND departure>='$to_date'";
->>>>>>> 747f7d077f7e6030d727923752e57de6ecab6223
   $data1 = mysqli_query($dbcc, $query);
   while($r=mysqli_fetch_assoc($data1)){
     $roomsarr[]=$r['room'];
   }
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 747f7d077f7e6030d727923752e57de6ecab6223
   $query = "SELECT room,type,floor FROM rooms";
   $data = mysqli_query($dbcc, $query);
 
@@ -35,10 +27,6 @@ if(mysqli_num_rows($data) != 0){
     while($row = mysqli_fetch_array($data))
     {
       $row2[]=$row;
-<<<<<<< HEAD
-=======
-
->>>>>>> 747f7d077f7e6030d727923752e57de6ecab6223
     }
     for ($i=1; $i <=2; $i++) {
       $j=0;
