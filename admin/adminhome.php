@@ -29,6 +29,24 @@ if(empty($_SESSION['username'])) {
     color: white;
 }
 
+table{
+  margin-top: 25px;
+}
+
+.container{
+  margin-bottom:100px; 
+}
+#check-form {
+  width: 55%;
+  margin: 0px auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 0px;
+  border: 1px solid #80C4DE;
+  background: white;
+  border-radius: 10px 10px 10px 10px;
+}
 
 </style>
 

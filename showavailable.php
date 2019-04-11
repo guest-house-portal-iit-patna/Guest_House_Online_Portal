@@ -73,10 +73,10 @@
       <div class="check-form" id="check-form">
       <div class="form-row"  action="<?php echo $_SERVER['PHP_SELF'];?>" method="get" >
         <div class="form-group col-md-4" style="margin-left:25px;">
-          <input type="date" class="form-control" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date'];} ?>" placeholder="from_date" name="from_date" min=<?php echo date('Y-m-d');?> >
+          <input type="date" class="form-control" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date'];} ?>" placeholder="from_date" name="from_date" min=<?php echo date('Y-m-d');?> required >
         </div>
         <div class="form-group col-md-4">
-          <input type="date" class="form-control" placeholder="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GEsT['to_date'];} ?>" name="to_date" min=<?php echo date('Y-m-d');?> >
+          <input type="date" class="form-control" placeholder="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date'];} ?>" name="to_date" min=<?php echo date('Y-m-d');?> required>
         </div>
       <div class="form-group col-md-2" >
         <button type="submit" class="btn btn-primary" name="check" style="margin-left:50px;">Check</button>
@@ -89,10 +89,16 @@
      if(isset($_GET['check'])) {
       $to_date=$_GET['to_date'];
       $from_date=$_GET['from_date'];
+      if($to_date<$from_date){
+        echo ' </br> <div class="container"><div class="alert alert-danger alert-dismissible fade show" role="alert">' .
+          'Please ensure that the dates are entered in a correct order.' . '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
+          '<span aria-hidden="true">&times;</span></button></div></div>';
+      }
+      else{
        ?>
       <h3>ROOMS</h3>
-      <?php require_once("../templates/matrix.php"); ?>
-    <?php } ?>
+      <?php require_once("templates/matrix.php"); ?>
+    <?php } } ?>
 
   </body>
 </html>

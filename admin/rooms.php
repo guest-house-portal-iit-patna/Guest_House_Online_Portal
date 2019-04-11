@@ -4,7 +4,12 @@ require_once('../server.php');
 require_once('adminhome.php');
 
 //upon approval
+if(!isset($_GET['check']))
 $activeTab = "1";
+if(isset($_GET['check']))
+{
+  $activeTab=$_SESSION['tab'];
+}
 
 $dbc= mysqli_connect('localhost','root','','guesthouse');
 if (!$dbc) {
@@ -79,6 +84,29 @@ if (!$dbc) {
    <div class="tab-content" id="companiesTabContent">
 
      <div class="tab-pane fade <?php if($activeTab==1){echo 'show active';} ?>" id="booked">
+
+       <form>
+         <div class="check-form" id="check-form">
+         <div class="form-row"  action="<?php echo $_SERVER['PHP_SELF'];?>" method="get" >
+           <div class="form-group col-md-4" style="margin-left:25px;">
+             <input type="date" class="form-control" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date'];} ?>" placeholder="from_date" name="from_date" min=<?php echo date('Y-m-d');?> >
+           </div>
+           <div class="form-group col-md-4">
+             <input type="date" class="form-control" placeholder="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date'];} ?>" name="to_date" min=<?php echo date('Y-m-d');?> >
+           </div>
+         <div class="form-group col-md-2" >
+           <button type="submit" class="btn btn-primary" name="check" style="margin-left:50px;">Check</button>
+         </div>
+         </div>
+         </div>
+       </form>
+
+       <?php
+        if(isset($_GET['check'])) {
+         $_SESSION['tab']=$activeTab;
+         $to_date=$_GET['to_date'];
+         $from_date=$_GET['from_date'];
+          ?>
        <table class="table">
          <thead class="thead-light">
            <tr>
@@ -100,7 +128,7 @@ if (!$dbc) {
            die("Connection failed: " . mysqli_connect_error());
          }
 
-           $query = "SELECT room,id,guestname,floor,username,indentorname,arrival,departure FROM bookedrooms";
+           $query = "SELECT room,id,guestname,floor,username,indentorname,arrival,departure FROM bookedrooms WHERE arrival<='$from_date' AND departure>='$from_date' OR arrival<='$to_date' AND departure>='$to_date' OR arrival>='$from_date' AND departure<='$to_date'";
            $data = mysqli_query($dbc, $query);
            if(mysqli_num_rows($data) != 0){
          ?>
@@ -128,9 +156,35 @@ if (!$dbc) {
            </tr>
          <?php } ?>
        </table>
+      <?php } ?>
+
      </div>
 
      <div class="tab-pane fade <?php if($activeTab==2){echo 'show active';} ?>" id="empty" role="tabpanel">
+
+       <form>
+         <div class="check-form" id="check-form">
+         <div class="form-row"  action="<?php echo $_SERVER['PHP_SELF'];?>" method="get" >
+           <div class="form-group col-md-4" style="margin-left:25px;">
+             <input type="date" class="form-control" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date'];} ?>" placeholder="from_date" name="from_date" min=<?php echo date('Y-m-d');?> >
+           </div>
+           <div class="form-group col-md-4">
+             <input type="date" class="form-control" placeholder="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date'];} ?>" name="to_date" min=<?php echo date('Y-m-d');?> >
+           </div>
+         <div class="form-group col-md-2" >
+           <button type="submit" class="btn btn-primary" name="check" style="margin-left:50px;">Check</button>
+         </div>
+         </div>
+         </div>
+       </form>
+
+       <?php
+        if(isset($_GET['check'])) {
+         $to_date=$_GET['to_date'];
+         $from_date=$_GET['from_date'];
+         $_SESSION['tab']=$activeTab;
+          ?>
+
        <table class="table">
          <thead class="thead-light">
            <tr>
@@ -145,10 +199,19 @@ if (!$dbc) {
          if (!$dbc) {
            die("Connection failed: " . mysqli_connect_error());
          }
-             $query = "SELECT room,type,floor FROM rooms ";
-           $data = mysqli_query($dbc, $query);
+         $query = "SELECT room FROM bookedrooms WHERE arrival<='$from_date' AND departure>='$from_date' OR arrival<='$to_date' AND departure>='$to_date' OR arrival>='$from_date' AND departure<='$to_date'";
+         $data1 = mysqli_query($dbc, $query);
+         while($r=mysqli_fetch_assoc($data1)){
+           $roomsarr[]=$r['room'];
+         }
+
+         $query = "SELECT room,type,floor FROM rooms";
+         $data = mysqli_query($dbc, $query);
+
+
            if(mysqli_num_rows($data) != 0){
          ?>
+         <?php   if(!isset($roomsarr)){ ?>
          <tbody>
            <?php
              $curr = 1;
@@ -159,16 +222,32 @@ if (!$dbc) {
                          '<td>' . $row["floor"] . '</td>' .
                      '</tr>';
                $curr = $curr + 1;
+           ?>
+         </tbody>
+       <?php }} else {
+          $curr = 1;
+        while($row = mysqli_fetch_array($data)){
+         if(!(in_array($row['room'],$roomsarr))){?>
+         <tbody>
+           <?php
+
+               echo '<tr><th scope="row">' . $curr . '</th>' .
+                         '<td>' . $row["room"] . '</td>' .
+                         '<td>' . $row["type"] . '</td>' .
+                         '<td>' . $row["floor"] . '</td>' .
+                     '</tr>';
+               $curr = $curr + 1;
              }
            ?>
          </tbody>
-         <?php } else { ?>
+     <?php  }} ?>
+   <?php } else { ?>
            <tr>
              <td>No data</td>
            </tr>
          <?php } ?>
        </table>
-
+     <?php } ?>
      </div>
 
      <div class="tab-pane fade <?php if($activeTab==3){echo 'show active';} ?>" id="all" role="tabpanel">

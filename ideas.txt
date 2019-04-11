@@ -5,3 +5,5 @@ user_role= admin
 edit titles on every page.
 navbar dropdown (arising because aria expanded=false not toggling to true ) -> showrooms.php, bookingform.php.
 We can use modals in calender and room views
+roomsrequested in viewrequest.php ", " instead of ","
+table alternate columns different color

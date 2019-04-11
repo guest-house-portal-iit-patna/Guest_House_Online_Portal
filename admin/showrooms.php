@@ -89,10 +89,16 @@
    if(isset($_GET['check'])) {
     $to_date=$_GET['to_date'];
     $from_date=$_GET['from_date'];
+    if($to_date<$from_date){
+      echo ' </br> <div class="container"><div class="alert alert-danger alert-dismissible fade show" role="alert">' .
+        'Please ensure that the dates are entered in a correct order.' . '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
+        '<span aria-hidden="true">&times;</span></button></div></div>';
+    }
+    else{
      ?>
     <h3>ROOMS</h3>
     <?php require_once("../templates/matrix.php"); ?>
-  <?php } ?>
+  <?php } } ?>
 
   </body>
 </html>
