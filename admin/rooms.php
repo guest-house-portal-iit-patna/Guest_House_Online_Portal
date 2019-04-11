@@ -4,12 +4,11 @@ require_once('../server.php');
 require_once('adminhome.php');
 
 //upon approval
-if(!isset($_GET['check']))
+$activeTab=1;
+if(isset($_GET['check1']))
 $activeTab = "1";
-if(isset($_GET['check']))
-{
-  $activeTab=$_SESSION['tab'];
-}
+if(isset($_GET['check2']))
+$activeTab = "2";
 
 $dbc= mysqli_connect('localhost','root','','guesthouse');
 if (!$dbc) {
@@ -95,14 +94,14 @@ if (!$dbc) {
              <input type="date" class="form-control" placeholder="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date'];} ?>" name="to_date" min=<?php echo date('Y-m-d');?> >
            </div>
          <div class="form-group col-md-2" >
-           <button type="submit" class="btn btn-primary" name="check" style="margin-left:50px;">Check</button>
+           <button type="submit" class="btn btn-primary" name="check1" style="margin-left:50px;">Check</button>
          </div>
          </div>
          </div>
        </form>
 
        <?php
-        if(isset($_GET['check'])) {
+        if(isset($_GET['check1'])) {
          $_SESSION['tab']=$activeTab;
          $to_date=$_GET['to_date'];
          $from_date=$_GET['from_date'];
@@ -172,17 +171,16 @@ if (!$dbc) {
              <input type="date" class="form-control" placeholder="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date'];} ?>" name="to_date" min=<?php echo date('Y-m-d');?> >
            </div>
          <div class="form-group col-md-2" >
-           <button type="submit" class="btn btn-primary" name="check" style="margin-left:50px;">Check</button>
+           <button type="submit" class="btn btn-primary" name="check2" style="margin-left:50px;">Check</button>
          </div>
          </div>
          </div>
        </form>
 
        <?php
-        if(isset($_GET['check'])) {
+        if(isset($_GET['check2'])) {
          $to_date=$_GET['to_date'];
          $from_date=$_GET['from_date'];
-         $_SESSION['tab']=$activeTab;
           ?>
 
        <table class="table">
