@@ -121,6 +121,10 @@ transition-duration: 300ms;
 .room:nth-child(10) label {
   background: #003c66;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 747f7d077f7e6030d727923752e57de6ecab6223
 .room label:hover {
 cursor: pointer;
 box-shadow: 0px 0 7px 3px #ccc;
