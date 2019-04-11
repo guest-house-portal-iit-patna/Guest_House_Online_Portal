@@ -101,11 +101,11 @@
           </fieldset>
           <fieldset>
             Date & Time of arrival : <br>
-            <input name="arrival" placeholder="Date & Time of Arrival: " type="datetime-local" tabindex="8" required>
+            <input name="arrival" placeholder="Date & Time of Arrival: " type="datetime-local" tabindex="8" required min=<?php echo date('Y-m-d');?> >
           </fieldset>
           <fieldset>
             Date & Time of departure : <br>
-            <input name="departure" placeholder="Date & Time of Departure: " type="datetime-local" tabindex="9" required>
+            <input name="departure" placeholder="Date & Time of Departure: " type="datetime-local" tabindex="9" required min=<?php echo date('Y-m-d');?> >
           </fieldset>
           <fieldset>
           Purpose of visit: <br>

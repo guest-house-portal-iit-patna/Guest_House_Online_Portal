@@ -36,7 +36,7 @@
 
   </script>
   <style media="screen" type="text/css">
-    button{
+    #roomsubmit{
       visibility: collapse;
     }
 
@@ -49,6 +49,17 @@
     visibility: hidden;
     }
 
+    #check-form {
+      width: 40%;
+      margin: 0px auto;
+      margin-top: 30px;
+      padding-top: 15px;
+      padding-bottom: 0px;
+      border: 1px solid #80C4DE;
+      background: white;
+      border-radius: 10px 10px 10px 10px;
+    }
+
     h3{
       text-align: center;
       margin-bottom: -10px;
@@ -58,8 +69,30 @@
 
   </head>
   <body class="root">
+    <form>
+      <div class="check-form" id="check-form">
+      <div class="form-row"  action="<?php echo $_SERVER['PHP_SELF'];?>" method="get" >
+        <div class="form-group col-md-4" style="margin-left:25px;">
+          <input type="date" class="form-control" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date'];} ?>" placeholder="from_date" name="from_date" min=<?php echo date('Y-m-d');?> >
+        </div>
+        <div class="form-group col-md-4">
+          <input type="date" class="form-control" placeholder="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GEsT['to_date'];} ?>" name="to_date" min=<?php echo date('Y-m-d');?> >
+        </div>
+      <div class="form-group col-md-2" >
+        <button type="submit" class="btn btn-primary" name="check" style="margin-left:50px;">Check</button>
+      </div>
+      </div>
+      </div>
+    </form>
 
-    <h3>ROOMS</h3>
-    <?php require_once("templates/matrix.php"); ?>
+    <?php
+     if(isset($_GET['check'])) {
+      $to_date=$_GET['to_date'];
+      $from_date=$_GET['from_date'];
+       ?>
+      <h3>ROOMS</h3>
+      <?php require_once("../templates/matrix.php"); ?>
+    <?php } ?>
+
   </body>
 </html>
