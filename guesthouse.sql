@@ -6,6 +6,11 @@ CREATE TABLE `users` (
  `username` varchar(256) NOT NULL,
  `email` varchar(256) NOT NULL,
  `password` varchar(256) NOT NULL,
+ `name` varchar(256) NOT NULL,
+ `designation` varchar(256) NOT NULL,
+ `employeeid` varchar(256) NOT NULL,
+ `department` varchar(256) NOT NULL,
+ `phone` varchar(256) NOT NULL,
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -32,8 +37,8 @@ CREATE TABLE `bookings` (
  `payment` varchar(256) NOT NULL,
  `number_rooms` int(11) NOT NULL,
  `accomodation` varchar(256) NOT NULL,
- `arrival` date NOT NULL,
- `departure` date NOT NULL,
+ `arrival` datetime NOT NULL,
+ `departure` datetime NOT NULL,
  `purpose` varchar(256) NOT NULL,
  `vegbreakfast` int(11) NOT NULL,
  `veglunch` int(11) NOT NULL,
@@ -67,11 +72,13 @@ CREATE TABLE `bookedrooms` (
  `username` varchar(256) NOT NULL,
  `guestname` varchar(256) NOT NULL,
  `indentorname` varchar(256) NOT NULL,
- `arrival` date NOT NULL,
- `departure` date NOT NULL,
+ `arrival` datetime NOT NULL,
+ `departure` datetime NOT NULL,
  PRIMARY KEY (`serial`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- Add DEFAULT admin to admin table
+INSERT INTO admin (username, password, email) VALUES ('admin', 'admin', 'admin@iitp.ac.in');
 
 -- CREATE TABLE `guestinfo` (
 --  `id` varchar(256) NOT NULL ,
