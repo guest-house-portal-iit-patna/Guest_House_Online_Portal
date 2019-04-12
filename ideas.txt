@@ -7,3 +7,4 @@ navbar dropdown (arising because aria expanded=false not toggling to true ) -> s
 We can use modals in calender and room views
 roomsrequested in viewrequest.php ", " instead of ","
 table alternate columns different color
+forgot password
