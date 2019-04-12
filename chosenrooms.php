@@ -4,6 +4,11 @@
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
+if(empty($_SESSION['username'])) {
+  header('location: login.php');
+}
+
 require_once('server.php');
 $id=$_SESSION['id'];
 $email=$_SESSION['email'];
