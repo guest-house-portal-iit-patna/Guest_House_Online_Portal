@@ -1,3 +1,26 @@
+  <?php include('server.php');
+    include('templates/navbar.php');
+    if(empty($_SESSION['username'])) {
+        header('location: login.php');
+      }
+
+    $dbc=mysqli_connect('localhost','root','','guesthouse');
+    if (!$dbc) {
+     die("Connection failed: " . mysqli_connect_error());
+    }
+    $username=$_SESSION['username'];
+    $query= "SELECT * FROM users WHERE username= '$username'";
+    $data = mysqli_query($db,$query);
+    $result=mysqli_fetch_array($data);
+    $name=$result['name'];
+    $designation=$result['designation'];
+    $id=$result['employeeid'];
+    $department=$result['department'];
+    $phone=$result['phone'];
+    $email=$result['email'];
+  ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +36,6 @@
   <link rel="stylesheet"   href="css/bookingform.css">
 </head>
 <body>
-  <?php include('server.php');
-  include('templates/navbar.php');
-  ?>
  <div id="root" style="margin-bottom:200px; margin-top:-50px;">
   <script src="main.js" type="text/javascript"></script>
   <div class="container">
@@ -85,7 +105,7 @@
           </select>
           </fieldset>
           <fieldset>
-            <input name="number_rooms" placeholder="Number of rooms" type="number" tabindex="7" required>
+            <input name="number_rooms" placeholder="1" type="number" tabindex="7" required>
           </fieldset>
           Accomodation Type: <br>
           <fieldset>

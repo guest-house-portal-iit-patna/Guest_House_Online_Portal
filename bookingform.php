@@ -11,6 +11,9 @@ $username=$_SESSION['username'];
 $guest_name = "";
 $phone_number= "";
 
+if(empty($_SESSION['username'])) {
+  header('location: login.php');
+}
 /*
 There was some problem while using arrays in the form, look into it later and learn.
 */
@@ -21,7 +24,9 @@ There was some problem while using arrays in the form, look into it later and le
 
 //connect to database
 $dbc=mysqli_connect('localhost','root','','guesthouse');
-
+if (!$dbc) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
 
 
 

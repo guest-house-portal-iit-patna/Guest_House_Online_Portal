@@ -1,6 +1,11 @@
 <?php
   require_once('server.php');
   require_once('templates/navbar.php');
+
+  if(empty($_SESSION['username'])) {
+  header('location: login.php');
+}
+
   $id=$_SESSION['id'];
   $query="SELECT number_rooms,arrival,departure FROM bookings WHERE id='$id'";
   $dbc= mysqli_connect('localhost','root','','guesthouse');
