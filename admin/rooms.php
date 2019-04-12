@@ -111,7 +111,7 @@ if (!$dbc) {
            <tr>
              <th scope="col">S.No.</th>
              <th scope="col">Room Number</th>
-             <th scope="col">Id</th>
+             <th scope="col">Booking Id</th>
              <th scope="col">Guest Name</th>
              <th scope="col">Floor No.</th>
              <th scope="col">Username</th>

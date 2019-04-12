@@ -14,7 +14,7 @@
     $result=mysqli_fetch_array($data);
     $name=$result['name'];
     $designation=$result['designation'];
-    $id=$result['employeeid'];
+    $employeeid=$result['employeeid'];
     $department=$result['department'];
     $phone=$result['phone'];
     $email=$result['email'];
@@ -68,22 +68,22 @@
       <div id="indentorinfo">
         <h3>INDENTOR INFORMATION</h3>
         <fieldset>
-          <input name="employee_id" placeholder="Employee ID" type="text" tabindex="16" required autofocus>
+          <input name="employee_id" placeholder="Employee ID" type="text" tabindex="16" required autofocus value="<?php if(isset($employeeid)) {echo $employeeid;} ?> ">
         </fieldset>
         <fieldset>
-          <input name="indentorname" placeholder="Indentor Name" type="text" tabindex="17" required>
+          <input name="indentorname" placeholder="Indentor Name" type="text" tabindex="17" required value="<?php if(isset($name)){ echo $name;} ?>">
         </fieldset>
         <fieldset>
-          <input name="designation" placeholder="Designation" type="text" tabindex="18" required>
+          <input name="designation" placeholder="Designation" type="text" tabindex="18" required value="<?php if(isset($designation)){ echo $designation;} ?>">
         </fieldset>
         <fieldset>
-          <input name="department" placeholder="Department" type="text" tabindex="19" required>
+          <input name="department" placeholder="Department" type="text" tabindex="19" required value="<?php {if(isset($department)) echo $department;} ?>">
         </fieldset>
         <fieldset>
-          <input name="phone" placeholder="Phone number" type="tel" tabindex="20" required>
+          <input name="phone" placeholder="Phone number" type="tel" tabindex="20" required value="<?php {if(isset($phone)) echo $phone;} ?>">
         </fieldset>
         <fieldset>
-          <input name="email" placeholder="Email ID" type="email" tabindex="21" required>
+          <input name="email" placeholder="Email ID" type="email" tabindex="21" required  value="<?php if(isset($email)) {echo $email;} ?>">
         </fieldset>
         </div>
     </div>
