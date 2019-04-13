@@ -6,6 +6,10 @@ session_start();
 
 $username = "";
 $email="";
+$designation = "";
+$phone = "";
+$employeeid = "";
+$name = "";
 $errors = array();
 //connect to database
 
@@ -18,7 +22,12 @@ if (!$db) {
 if(isset($_POST['register']))
  {
     $username = $_POST['username'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
+    $designation = $_POST['designation'];
+    $employeeid= $_POST['employeeid'];
+    $phone = $_POST['phone'];
+    $department = $_POST['department'];
     $password_1 = $_POST['password_1'];
     $password_2 = $_POST['password_2'];
 
@@ -27,9 +36,25 @@ if(isset($_POST['register']))
     {
       array_push($errors, "Username is required.");
     }
+    if(empty($name))
+    {
+      array_push($errors, "Name is required.");
+    }
     if(empty($email))
     {
       array_push($errors, "Email is required.");
+    }
+    if(empty($designation))
+    {
+      array_push($errors, "Designation is required.");
+    }
+    if(empty($employeeid))
+    {
+      array_push($errors, "Employee id is required.");
+    }
+    if(empty($phone))
+    {
+      array_push($errors, "Phone No. is required.");
     }
     if(empty($password_1))
     {
@@ -56,7 +81,7 @@ if(isset($_POST['register']))
 
       if($count1+$count2==0)
         {
-          $sql = "INSERT INTO users (username,email,password) VALUES ('$username','$email','$password')";
+          $sql = "INSERT INTO users (username,name,email,designation,employeeid,phone,department,password) VALUES ('$username','$name','$email','$designation','$employeeid','$phone','$department','$password')";
           if(mysqli_query($db,$sql))
           {
             // Sending mail and then redirecting to homepage
