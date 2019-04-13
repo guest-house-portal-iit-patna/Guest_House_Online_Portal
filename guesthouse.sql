@@ -4,13 +4,13 @@ USE guesthouse;
 CREATE TABLE `users` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `username` varchar(256) NOT NULL,
- `email` varchar(256) NOT NULL,
- `password` varchar(256) NOT NULL,
  `name` varchar(256) NOT NULL,
+ `email` varchar(256) NOT NULL,
  `designation` varchar(256) NOT NULL,
  `employeeid` varchar(256) NOT NULL,
- `department` varchar(256) NOT NULL,
  `phone` varchar(256) NOT NULL,
+ `department` varchar(256) NOT NULL,
+ `password` varchar(256) NOT NULL,
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
