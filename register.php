@@ -31,9 +31,40 @@ require_once('templates/navbar.php');
     <input type="text" name="username" required placeholder="Username" value="<?php echo $username; ?>">
   </div>
   <div class="input-group">
+    <label>Name</label>
+    <input type="text" name="name" required placeholder="Username" value="<?php echo $name; ?>">
+  </div>
+  <div class="input-group">
     <label>Email</label>
     <input type="email" name="email" required placeholder= "email@iitp.ac.in" value="<?php echo $username; ?>">
   </div>
+  <div class="input-group">
+    <label>Designation</label>
+    <input type="text" name="designation" required placeholder="Designation" value="<?php echo $designation; ?>">
+  </div>
+  <div class="input-group">
+    <label>Employee id</label>
+    <input type="text" name="employeeid" required placeholder= "Employee id" value="<?php echo $employeeid; ?>">
+  </div>
+  <div class="input-group">
+    <label>Phone No.</label>
+    <input type="text" name="phone" required placeholder= "Phone No." value="<?php echo $phone; ?>">
+  </div>
+  <div class="wrapper">
+    <div class="form-group form-inline">
+      <label for="department">Department</label>
+      <select id="department" class="form-control" name="department" value="<?php {if(isset($data['department'])) echo $data['department'];} ?>">
+        <option selected>Computer Science and Engineering</option>
+        <option>Electrical Engineering</option>
+        <option>Mechanical Engineering</option>
+        <option>Civil Engineering</option>
+        <option>Chemical Engineering</option>
+        <option>Metallurgical Engineering</option>
+        <option>Others</option>
+      </select>
+    </div>
+  </div>
+
   <div class="input-group">
     <label>Password</label>
     <input type="password" required placeholder="******" name="password_1">
