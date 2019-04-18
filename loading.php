@@ -7,10 +7,10 @@ $date1 = strtotime(date("Y-m-d 00:00:00"));
 //$today = date("Y-m-d H:i:s");
 
 $dbcc= mysqli_connect('localhost','root','','guesthouse');
-$query = "DELETE FROM info";
+$query = "DELETE FROM calendar";
 $data1 = mysqli_query($dbcc, $query);
 $date = date("Y-m-d", $date1);
-for($i = 0 ; $i <= 10; $i++){
+for($i = 0 ; $i <= 45; $i++){
     $from_date1 = $date1;
     $from_date = date("Y-m-d 00:00:00", $from_date1);
     $to_date1 = strtotime("+1 day", $from_date1);
@@ -59,7 +59,7 @@ for($i = 0 ; $i <= 10; $i++){
           }
           }
           $str = "Normal: ".$normal."\nMaster: ".$master;
-          $query = "INSERT INTO info (title, start_event, end_event) VALUES ('$str','$from_date','$from_date')";
+          $query = "INSERT INTO calendar (available_rooms, start_time, end_time) VALUES ('$str','$from_date','$from_date')";
           mysqli_query($dbcc,$query);
           $date1 = strtotime("+1 day", $date1);
           unset($roomsarr);

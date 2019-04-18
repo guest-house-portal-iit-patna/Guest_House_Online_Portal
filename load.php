@@ -5,7 +5,7 @@
 $connect = new PDO('mysql:host=localhost;dbname=guesthouse', 'root', '');
 $data = array();
 
-$query = "SELECT * FROM info ORDER BY id";
+$query = "SELECT * FROM calendar ORDER BY id";
 
 $statement = $connect->prepare($query);
 
@@ -17,9 +17,9 @@ foreach($result as $row)
 {
  $data[] = array(
   'id'   => $row["id"],
-  'title'   => $row["title"],
-  'start'   => $row["start_event"],
-  'end'   => $row["end_event"]
+  'title'   => $row["available_rooms"],
+  'start'   => $row["start_time"],
+  'end'   => $row["end_time"]
  );
 }
 

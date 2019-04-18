@@ -47,7 +47,7 @@
   <br />
 
   <br />
-  <div class="container" style="max-width: 50%; margin-bottom:200px; ">
+  <div class="container" style="max-width: 50%; margin-bottom:100px; margin-top:30px; ">
    <div id="calendar"></div>
   </div>
  </body>
