@@ -43,6 +43,7 @@ if(empty($_SESSION['username'])) {
    <a href="booking.php">Make a booking request.</a> <br>
    <a href="checkbooking.php?username=<?php echo $_SESSION['username']; ?>">Check status of current requests.</a> <br>
    <a href="showavailable.php">Check availability.</a> <br>
+   <a href="loading.php">Check Calendar View.</a> <br>
    <p> <a href="homepage.php?logout='1'" style="color: red;"> Logout</a> </p>
  <?php endif  ?>
 </div>
