@@ -77,7 +77,15 @@ CREATE TABLE `bookedrooms` (
  PRIMARY KEY (`serial`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `info` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `title` varchar(256) NOT NULL,
+ `start_event` date NOT NULL,
+ `end_event` date NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1
 -- Add DEFAULT admin to admin table
+
 INSERT INTO admin (username, password, email) VALUES ('admin', 'admin', 'admin@iitp.ac.in');
 
 -- CREATE TABLE `guestinfo` (
