@@ -33,9 +33,9 @@ table{
   margin-top: 25px;
 }
 
-.container{
-  margin-bottom:100px; 
-}
+/* .container{
+  margin-bottom:100px;
+} */
 #check-form {
   width: 55%;
   margin: 0px auto;
@@ -52,7 +52,7 @@ table{
 
 </head>
 <body>
-  <div id="root">
+  <div id="root" style="margin-bottom:100px;">
     <img src="../images/iitp_logo.png" class="rounded float-left">
   	<div class="header-nav">
   	  <h1>IIT PATNA</h1>
