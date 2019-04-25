@@ -69,10 +69,10 @@
     <div class="check-form" id="check-form">
     <div class="form-row"  action="<?php echo $_SERVER['PHP_SELF'];?>" method="get" >
       <div class="form-group col-md-4" style="margin-left:25px;">
-        <input type="date" class="form-control" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date'];} ?>" placeholder="from_date" name="from_date" min=<?php echo date('Y-m-d');?> required >
+        <input type="date" class="form-control" value="<?php if(isset($_GET['from_date'])){ echo $_GET['from_date'];} ?>" placeholder="from_date" name="from_date" required >
       </div>
       <div class="form-group col-md-4">
-        <input type="date" class="form-control" placeholder="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date'];} ?>" name="to_date" min=<?php echo date('Y-m-d');?> required >
+        <input type="date" class="form-control" placeholder="to_date" value="<?php if(isset($_GET['to_date'])){ echo $_GET['to_date'];} ?>" name="to_date" required >
       </div>
     <div class="form-group col-md-2" >
       <button type="submit" class="btn btn-primary" name="check" style="margin-left:50px;">Check</button>
