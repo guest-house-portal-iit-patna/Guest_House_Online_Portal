@@ -97,11 +97,11 @@
           <fieldset>
           <select name="payment" id="payment">
           <option value="">Please choose an option</option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="hamster">Hamster</option>
-          <option value="parrot">Parrot</option>
-          <option value="spider">Spider</option>
+          <option value="On Arrival">On Arrival</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="Debit Card">Debit Card</option>
+          <option value="Beared by Institute.">Beared by Institute</option>
+          <!-- <option value="spider"></option> -->
           </select>
           </fieldset>
           <fieldset>
@@ -111,12 +111,12 @@
           <fieldset>
           <select name="accomodation" id="accomodation">
           <option value="">Please choose an option</option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-          <option value="hamster">Hamster</option>
-          <option value="parrot">Parrot</option>
+          <option value="Master">Master</option>
+          <option value="Normal">Normal</option>
+          <option value="Master & Normal">Master & Normal</option>
+          <!-- <option value="parrot">Parrot</option>
           <option value="spider">Spider</option>
-          <option value="goldfish">Goldfish</option>
+          <option value="goldfish">Goldfish</option> -->
           </select>
           </fieldset>
           <fieldset>
@@ -131,10 +131,10 @@
           Purpose of visit: <br>
           <select name="purpose" id="purpose">
           <option value="">Please choose an option</option>
-          <option value="dog">Meeting</option>
-          <option value="cat">Guest Lecture</option>
-          <option value="hamster">Workshop</option>
-          <option value="parrot">Event</option>
+          <option value="Meeting">Meeting</option>
+          <option value="Guest Lecture">Guest Lecture</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Event">Event</option>
           <!-- <option value="spider">Spider</option>
           <option value="goldfish">Goldfish</option> -->
           </select>
