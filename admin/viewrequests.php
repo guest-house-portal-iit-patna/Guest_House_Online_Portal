@@ -175,7 +175,7 @@ use PHPMailer\PHPMailer\Exception;
 <!--html code-->
 <br>
 <div class="container" style="width:80%;">
-  <ul class="nav nav-pills nav-justified" id="companiesTab" role="tablist" >
+  <ul class="nav nav-pills nav-justified" id="guesthouseTab" role="tablist" >
     <li class="nav-item pill-1">
       <a class="nav-link <?php if($activeTab==1){echo 'active';} ?>" id="home-tab" data-toggle="tab" href="#accepted" role="tab" aria-controls="home" aria-selected="true">Accepted</a>
     </li>
@@ -186,16 +186,18 @@ use PHPMailer\PHPMailer\Exception;
       <a class="nav-link <?php if($activeTab==3){echo 'active';} ?>" id="contact-tab" data-toggle="tab" href="#rejected" role="tab" aria-controls="contact" aria-selected="false">Rejected</a>
     </li>
   </ul>
-  <div class="tab-content" id="companiesTabContent">
+  <div class="tab-content" id="guesthouseTabContent">
     <div class="tab-pane fade <?php if($activeTab==1){echo 'show active';} ?>" id="accepted">
       <table class="table">
         <thead class="thead-light">
           <tr>
             <th scope="col">S.No.</th>
-            <th scope="col">Username</th>
+            <th scope="col">Indentor Name</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
             <th scope="col">Rooms Requested</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Departure</th>
             <th scope="col">Change Status</th>
           </tr>
         </thead>
@@ -206,7 +208,7 @@ use PHPMailer\PHPMailer\Exception;
           die("Connection failed: " . mysqli_connect_error());
         }
 
-          $query = "SELECT id, username, guestname, guestphone, requestedrooms FROM bookings WHERE status='accepted'";
+          $query = "SELECT id, indentorname, guestname, guestphone, requestedrooms, arrival, departure FROM bookings WHERE status='accepted'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -215,12 +217,14 @@ use PHPMailer\PHPMailer\Exception;
             $curr = 1;
             while($row = mysqli_fetch_array($data)){
               echo '<tr><th scope="row">' . $curr . '</th>' .
-                        '<td>' . $row["username"] . '</td>' .
+                        '<td>' . $row["indentorname"] . '</td>' .
                         '<td>' . $row["guestname"] . '</td>' .
                         '<td>' . $row["guestphone"] . '</td>' .
                         '<td>' . $row["requestedrooms"] . '</td>' .
+                        '<td>' . $row["arrival"] . '</td>' .
+                        '<td>' . $row["departure"] . '</td>' .
                         '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=1" method="post">' .
-                        '<button type="reject" class="btn btn-outline-danger" name="reject">Reject</button></form></td>' .
+                        '<button type="reject" class="btn btn-outline-danger" name="reject">Cancel</button></form></td>' .
                     '</tr>';
               $curr = $curr + 1;
             }
@@ -238,12 +242,14 @@ use PHPMailer\PHPMailer\Exception;
         <thead class="thead-light">
           <tr>
             <th scope="col">S.No.</th>
-            <th scope="col">Username</th>
+            <th scope="col">Indentor Name</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
             <th scope="col">Rooms Requested</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Departure</th>
             <th scope="col">Change Status</th>
-            <th scope="col">Delete Request</th>
+            <!-- <th scope="col">Delete Request</th> -->
           </tr>
         </thead>
         <?php
@@ -251,7 +257,7 @@ use PHPMailer\PHPMailer\Exception;
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
-            $query = "SELECT id, username, guestname, guestphone, requestedrooms FROM bookings WHERE status='pending'";
+            $query = "SELECT id, indentorname, guestname, guestphone, requestedrooms,arrival, departure FROM bookings WHERE status='pending'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -260,15 +266,17 @@ use PHPMailer\PHPMailer\Exception;
             $curr = 1;
             while($row = mysqli_fetch_array($data)){
               echo '<tr><th scope="row">' . $curr . '</th>' .
-                        '<td>'. $row["username"] . '</td>' .
+                        '<td>'. $row["indentorname"] . '</td>' .
                         '<td>' . $row["guestname"] . '</td>' .
                         '<td>' . $row["guestphone"] . '</td>' .
                         '<td>' . $row["requestedrooms"] . '</td>' .
+                        '<td>' . $row["arrival"] . '</td>' .
+                        '<td>' . $row["departure"] . '</td>' .
                         '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=2" method="post">' .
                         '<button type="approve" class="btn btn-outline-success" name="approve">Approve</button> ' .
                         '<button type="reject" class="btn btn-outline-danger" name="reject">Reject</button></form></td>' .
-                        '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post">' .
-                        '<button type="delete" class="btn btn-outline-danger" name="delete">Delete</button></form></td>' .
+                        // '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post">' .
+                        // '<button type="delete" class="btn btn-outline-danger" name="delete">Delete</button></form></td>' .
                     '</tr>';
               $curr = $curr + 1;
             }
@@ -286,10 +294,12 @@ use PHPMailer\PHPMailer\Exception;
         <thead class="thead-light">
           <tr>
             <th scope="col">S.No.</th>
-            <th scope="col">Username</th>
+            <th scope="col">Indentor Name</th>
             <th scope="col">Guest Name</th>
             <th scope="col">Guest Number</th>
             <th scope="col">Rooms Requested</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Departure</th>
             <th scope="col">Change Status</th>
             <th scope="col">Delete Request</th>
           </tr>
@@ -299,7 +309,7 @@ use PHPMailer\PHPMailer\Exception;
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
-          $query = "SELECT id, username, guestname, guestphone,requestedrooms FROM bookings WHERE status='rejected'";
+          $query = "SELECT id, indentorname, guestname, guestphone,requestedrooms,arrival, departure FROM bookings WHERE status='rejected'";
           $data = mysqli_query($dbc, $query);
           if(mysqli_num_rows($data) != 0){
         ?>
@@ -308,10 +318,12 @@ use PHPMailer\PHPMailer\Exception;
             $curr = 1;
             while($row = mysqli_fetch_array($data)){
                     echo '<tr><th scope="row">' . $curr . '</th>' .
-                              '<td>' . $row["username"] . '</td>' .
+                              '<td>' . $row["indentorname"] . '</td>' .
                               '<td>' . $row["guestname"] . '</td>' .
                               '<td>' . $row["guestphone"] . '</td>' .
                               '<td>' . $row["requestedrooms"] . '</td>' .
+                              '<td>' . $row["arrival"] . '</td>' .
+                              '<td>' . $row["departure"] . '</td>' .
                               '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post" >' .
                               '<button type="approve" class="btn btn-outline-info" name="approve">Approve</button></form></td>' .
                               '<td><form action="' . $_SERVER['PHP_SELF'] . '?id=' . $row["id"] . '&tab=3" method="post">' .
