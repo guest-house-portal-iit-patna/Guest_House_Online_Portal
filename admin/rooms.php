@@ -66,7 +66,7 @@ if (!$dbc) {
  <!--html code-->
  <br>
  <div class="container" style="width:80%;">
-   <ul class="nav nav-pills nav-justified" id="companiesTab" role="tablist" >
+   <ul class="nav nav-pills nav-justified" id="guesthouseTab" role="tablist" >
      <li class="nav-item pill-1">
        <a class="nav-link <?php if($activeTab==1){echo 'active';} ?>" id="home-tab" data-toggle="tab" href="#booked" role="tab" aria-controls="home" aria-selected="true">Booked</a>
      </li>
@@ -80,7 +80,7 @@ if (!$dbc) {
        <a class="nav-link <?php if($activeTab==4){echo 'active';} ?>" id="home-tab" data-toggle="tab" href="#add" role="tab" aria-controls="home" aria-selected="true">Add Rooms </a>
      </li>
    </ul>
-   <div class="tab-content" id="companiesTabContent">
+   <div class="tab-content" id="guesthouseTabContent">
 
      <div class="tab-pane fade <?php if($activeTab==1){echo 'show active';} ?>" id="booked">
 
