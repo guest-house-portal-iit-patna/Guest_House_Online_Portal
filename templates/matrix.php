@@ -1,5 +1,5 @@
 <?php
-  $dbcc= mysqli_connect('localhost','root','','guesthouse');
+  $dbcc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
   if (!$dbcc) {
     die("Connection failed: " . mysqli_connect_error());
   }
@@ -71,7 +71,30 @@ if(mysqli_num_rows($data) != 0){
     <?php } }?>
 
       </ol>
-      <button type="submit" class="btn btn-primary" id="roomsubmit" name="roomschosen" style="margin:auto; display:block;">Submit</button>
+      <button type="submit" class="btn btn-primary" id="roomsubmit" name="roomschosen" style="margin: 2.5% auto 2.5%; display:block;">Submit</button>
       </form>
+
+<div class="align" style="display: flex; margin-left:25%;">
+  <figure style="display: flex; float:left; margin-right:3%;">
+    <img src="images/legend/green.png" alt="" style="height:20px; width:20px; display:inline-block; margin-left:5%; margin-right:2%;">
+    <figcaption style="float:right; margin-left:5%; display:inline-block;">Selected</figcaption>
+  </figure>
+  <figure style="display: flex; float:left; margin-right:3%;">
+    <img src="images/legend/crimson.png" alt="" style="height:20px; width:20px; display:inline-block; margin-left:5%; margin-right:2%;">
+    <figcaption style="float:right; margin-left:5%;">Booked</figcaption>
+  </figure>
+  <figure style="display: flex;float:left; margin-right:3%;">
+    <img src="images/legend/blue.png" alt="" style="height:20px; width:20px; display:inline-block; margin-left:5%; margin-right:2%;">
+    <figcaption style="float:right; margin-left:5%;">Normal </figcaption>
+  </figure>
+  <figure style="display: flex; float:left; margin-right:3%;">
+    <img src="images/legend/dblue.png" alt="" style="height:20px; width:20px; display:inline-block; margin-left:5%; margin-right:2%;">
+    <figcaption style="float:right; margin-left:5%;">Master </figcaption>
+  </figure>
+  <figure style="display: flex; float:left; margin-right:3%;">
+    <img src="images/legend/orange.png" alt="" style="height:20px; width:20px; display:inline-block; margin-left:5%; margin-right:2%;">
+    <figcaption style="float:right; margin-left:5%;">Requested</figcaption>
+  </figure>
+</div>
 
 </div>

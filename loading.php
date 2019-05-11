@@ -1,12 +1,15 @@
 <?php
-
+require_once('server.php');
 //load.php
-
-$connect = new PDO('mysql:host=localhost;dbname=guesthouse', 'root', '');
+$hostname=DB_HOST;
+$user=DB_USER;
+$password=DB_PASSWORD;
+$databasename=DB_NAME;
+$connect = new PDO("mysql:host=$hostname;dbname=$databasename", $user, $password);
 $date1 = strtotime(date("Y-m-d 00:00:00"));
 //$today = date("Y-m-d H:i:s");
 
-$dbcc= mysqli_connect('localhost','root','','guesthouse');
+$dbcc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 $query = "DELETE FROM calendar";
 $data1 = mysqli_query($dbcc, $query);
 $date = date("Y-m-d", $date1);
@@ -19,7 +22,7 @@ for($i = 0 ; $i <= 45; $i++){
     print("to ".$to_date."= ".gettype($from_date)."<br>");
     $normal = 0;
     $master = 0;
-    $dbcc= mysqli_connect('localhost','root','','guesthouse');
+    $dbcc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if (!$dbcc) {
       die("Connection failed: " . mysqli_connect_error());
     }

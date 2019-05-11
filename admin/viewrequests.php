@@ -15,7 +15,7 @@ use PHPMailer\PHPMailer\Exception;
 
     //connect to database
 
-    $dbc= mysqli_connect('localhost','root','','guesthouse');
+    $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if (!$dbc) {
       die("Connection failed: " . mysqli_connect_error());
     }
@@ -113,7 +113,7 @@ use PHPMailer\PHPMailer\Exception;
 
     //connect to database
 
-    $dbc= mysqli_connect('localhost','root','','guesthouse');
+    $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if (!$dbc) {
       die("Connection failed: " . mysqli_connect_error());
     }
@@ -147,7 +147,7 @@ use PHPMailer\PHPMailer\Exception;
 
     //connect to database
 
-    $dbc= mysqli_connect('localhost','root','','guesthouse');
+    $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if (!$dbc) {
       die("Connection failed: " . mysqli_connect_error());
     }
@@ -203,7 +203,7 @@ use PHPMailer\PHPMailer\Exception;
         </thead>
 
         <?php
-        $dbc= mysqli_connect('localhost','root','','guesthouse');
+        $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
@@ -248,12 +248,12 @@ use PHPMailer\PHPMailer\Exception;
             <th scope="col">Rooms Requested</th>
             <th scope="col">Arrival</th>
             <th scope="col">Departure</th>
-            <th scope="col">Change Status</th>
+            <th scope="col" style="width:20%;">Change Status</th>
             <!-- <th scope="col">Delete Request</th> -->
           </tr>
         </thead>
         <?php
-        $dbc= mysqli_connect('localhost','root','','guesthouse');
+        $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }
@@ -305,7 +305,7 @@ use PHPMailer\PHPMailer\Exception;
           </tr>
         </thead>
         <?php
-        $dbc= mysqli_connect('localhost','root','','guesthouse');
+        $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         if (!$dbc) {
           die("Connection failed: " . mysqli_connect_error());
         }

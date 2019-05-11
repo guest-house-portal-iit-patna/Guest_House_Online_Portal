@@ -10,7 +10,7 @@ $activeTab = "1";
 if(isset($_GET['check2']))
 $activeTab = "2";
 
-$dbc= mysqli_connect('localhost','root','','guesthouse');
+$dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if (!$dbc) {
   die("Connection failed: " . mysqli_connect_error());
 }
@@ -40,7 +40,7 @@ if (!$dbc) {
 
     //connect to database
 
-    $dbc= mysqli_connect('localhost','root','','guesthouse');
+    $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if (!$dbc) {
       die("Connection failed: " . mysqli_connect_error());
     }
@@ -122,7 +122,7 @@ if (!$dbc) {
          </thead>
 
          <?php
-         $dbc= mysqli_connect('localhost','root','','guesthouse');
+         $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
          if (!$dbc) {
            die("Connection failed: " . mysqli_connect_error());
          }
@@ -193,7 +193,7 @@ if (!$dbc) {
            </tr>
          </thead>
          <?php
-         $dbc= mysqli_connect('localhost','root','','guesthouse');
+         $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
          if (!$dbc) {
            die("Connection failed: " . mysqli_connect_error());
          }
@@ -260,7 +260,7 @@ if (!$dbc) {
            </tr>
          </thead>
          <?php
-         $dbc= mysqli_connect('localhost','root','','guesthouse');
+         $dbc= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
          if (!$dbc) {
            die("Connection failed: " . mysqli_connect_error());
          }

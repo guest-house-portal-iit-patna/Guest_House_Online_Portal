@@ -1,11 +1,9 @@
-Calender view (full calender) #DONE
-logout on every page
+
 security issues
 user_role= admin
-edit titles on every page.
-navbar dropdown (arising because aria expanded=false not toggling to true ) -> showrooms.php, bookingform.php. #DONE
 We can use modals in calender and room views
 roomsrequested in viewrequest.php ", " instead of ","
 table alternate columns different color
 forgot password
 use mysqli_real_escape_string wherever 'get' is used
+//orange circle #E67E22

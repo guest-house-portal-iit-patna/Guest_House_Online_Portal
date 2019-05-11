@@ -23,7 +23,7 @@ There was some problem while using arrays in the form, look into it later and le
 // $room=array("number_people"=>" ","payment"=>" ","number_rooms"=>" ", "accomodation"=>" ", "arrival"=>" ","departure"=>" ","purpose"=>" ","veg_breakfast"=>" ","veg_lunch"=>" ","veg_dinner"=>" ","nonveg_breakfast"=>" ","nonveg_lunch"=>" ","nonveg_dinner"=>" ");
 
 //connect to database
-$dbc=mysqli_connect('localhost','root','','guesthouse');
+$dbc=mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if (!$dbc) {
     die("Connection failed: " . mysqli_connect_error());
   }
@@ -94,7 +94,7 @@ mysqli_query($dbc,$sql);
   $_SESSION['email']=$email;
   $_SESSION['id']=$random_id;
   $_SESSION['success'] = "You are now logged in.";
- 
+
   // heading to chooseroom.php
   header('location: chooseroom.php');
 }

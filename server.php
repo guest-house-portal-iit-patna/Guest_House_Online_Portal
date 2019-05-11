@@ -12,8 +12,9 @@ $employeeid = "";
 $name = "";
 $errors = array();
 //connect to database
+require_once('connectVars.php');
 
-$db= mysqli_connect('localhost','root','','guesthouse');
+$db= mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if (!$db) {
   die("Connection failed: " . mysqli_connect_error());
 }

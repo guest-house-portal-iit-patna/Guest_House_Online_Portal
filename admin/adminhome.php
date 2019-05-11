@@ -88,9 +88,9 @@ table{
             <?php echo $_SESSION['username']; ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/Guest_House_Online_Portal/adminlogin.php" >option</a>
-            <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php" >option</a>
-            <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php" >option</a>
+            <!-- <a class="dropdown-item" href="/Guest_House_Online_Portal/adminlogin.php" >option</a> -->
+            <!-- <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php" >option</a> -->
+            <!-- <a class="dropdown-item" href="/Guest_House_Online_Portal/login.php" >option</a> -->
             <a class="dropdown-item" href="../server.php?logout='1'" style="color: red;"> Logout</a>
           </div>
 
