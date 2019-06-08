@@ -1,5 +1,7 @@
 # Guest_House_Online_Portal
 
+A video tutorial is present here : https://drive.google.com/file/d/1tzhX4s-QQzaXJUNSyXD2SeUGZgNf0Gf3/view?usp=sharing
+
 ###IMPORTANT###
   Change the name of the cloned repository to 'Guest_House_Online_Portal'.
 

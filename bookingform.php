@@ -3,7 +3,7 @@
 // These must be at the top of your script, not inside a function
 // use PHPMailer\PHPMailer\PHPMailer;
 // use PHPMailer\PHPMailer\Exception;
-
+require_once("server.php");
 session_start();
 
 //declaring variables
